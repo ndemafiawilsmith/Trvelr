@@ -22,6 +22,11 @@
     @livewireStyles()
 </head>
 
+{{-- // $search = $desc . ', Africa';
+        // $page = 6;
+        // $per_page = 15;
+        // $orientation = 'landscape'; --}}
+
 <body data-barba="wrapper">
 
 

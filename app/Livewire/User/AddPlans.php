@@ -38,12 +38,6 @@ class AddPlans extends Component
         return view('livewire.user.add-plans', with(compact('countries')));
     }
 
-    // protected $rules = [
-    //     'title' => 'required|min:3|max:255',
-    //     'budget' => 'required|numeric',
-    //     'remark' => 'required',
-    // ];
-
     public function addTitle()
     {
         $this->validate([

@@ -73,6 +73,11 @@ class ComputePlan extends Component
         $this->generateItinerary($prompt);
 
 
+        // $search = $desc . ', Africa';
+        // $page = 6;
+        // $per_page = 15;
+        // $orientation = 'landscape';
+
         // Clean Json
         // Remove everything before the first '['
         $json = preg_replace('/^[^\[]*\[/', '[', $this->result);

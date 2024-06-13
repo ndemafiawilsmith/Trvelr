@@ -22,5 +22,11 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
         // $this->call(CountriesTableSeeder::class);
         $this->call(ItinerariesTableSeeder::class);
+
+
+        // $search = $desc . ', Africa';
+        // $page = 6;
+        // $per_page = 15;
+        // $orientation = 'landscape';
     }
 }

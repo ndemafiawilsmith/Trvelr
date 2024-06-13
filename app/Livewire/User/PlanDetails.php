@@ -2,6 +2,7 @@
 
 namespace App\Livewire\User;
 
+use App\Models\country;
 use App\Models\countryImages;
 use App\Models\itinerarie;
 use Livewire\Attributes\Layout;
@@ -42,22 +43,27 @@ class PlanDetails extends Component
         // test it out
         $results = $pixabayClient->get(['q' => 'Touristic Areas cameroon '], true);
 
-        foreach ($results['hits'] as $images) {
-            countryImages::create(
-                [
-                    'country_id' => $images['country_id'],
-                    'previewURL' => $images['previewURL'],
-                    'imageURL' => $images['imageURL'], // Note: In your schema, the column name is 'imgeURL', correct if needed
-                    'tags' => $images['tags'],
-                    'status' => 1,
-                    'type' => 'api',
-                ]
-            );
+        $country = country::where('countryname', $desc)->first();
+        $CountryImages = countryImages::where('country_id', $country->id)->count();
+        if($CountryImages > 0){
+
+        }else{
+            foreach ($results['hits'] as $images) {
+                countryImages::create(
+                    [
+                        'country_id' => $country->id,
+                        'previewURL' => $images['previewURL'],
+                        'imageURL' => $images['imageURL'], // Note: In your schema, the column name is 'imgeURL', correct if needed
+                        'tags' => $images['tags'],
+                        'status' => 1,
+                        'type' => 'api',
+                    ]
+                );
+            }
         }
+        $photoo = countryImages::where('country_id', $country->id)->get();
 
-        return Search::photos($search, $page, $per_page, $orientation)->getResults();
-
-        // return Photo::random($filters);
+        return $photoo;
     }
 
 

@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class countryImages extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'country_id',
+        'previewURL',
+        'imageURL',
+        'tags',
+        'status',
+        'type'
+    ];
 }

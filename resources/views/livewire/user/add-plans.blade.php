@@ -87,7 +87,7 @@
                                 <div class="col-md-4">
                                     <a href="javascript:void(0);"
                                         wire:click="updatePlan('country', '{{ $country->id }}')" class="country-card">
-                                        <img src="{{ asset('mysql-country-with-flag/flags-medium/' . $country->code . '.png') }}"
+                                        <img src="{{ asset('mysql-country-with-flag/flags-medium/' . strtolower($country->code) . '.png') }}"
                                             alt="{{ $country->countryname }}">
                                         <h5>{{ $country->countryname }}</h5>
                                     </a>

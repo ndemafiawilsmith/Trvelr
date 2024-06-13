@@ -9,6 +9,7 @@ class countryImages extends Model
 {
     use HasFactory;
 
+    // Add Fillable
     protected $fillable = [
         'country_id',
         'previewURL',

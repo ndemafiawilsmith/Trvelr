@@ -24,17 +24,18 @@ class PlanDetails extends Component
 
     public function getImages($desc)
     {
-        HttpClient::init([
-            'applicationId' => 'uCZgmxagUe6CE2fm_MjiIEwpY3iQIMFH6y5RhfsKYKU',
-            'secret' => 'SUoyUSmVGnunDfCCBR9X24y_PDcLS3F8LQ_cZmy0bx4',
-            'callbackUrl' => 'https://your-application.com/oauth/callback',
-            'utmSource' => 'Trvelr'
-        ]);
+        // Deprected Api
+        // HttpClient::init([
+        //     'applicationId' => 'uCZgmxagUe6CE2fm_MjiIEwpY3iQIMFH6y5RhfsKYKU',
+        //     'secret' => 'SUoyUSmVGnunDfCCBR9X24y_PDcLS3F8LQ_cZmy0bx4',
+        //     'callbackUrl' => 'https://your-application.com/oauth/callback',
+        //     'utmSource' => 'Trvelr'
+        // ]);
 
-        $search = $desc . ', Africa';
-        $page = 6;
-        $per_page = 15;
-        $orientation = 'landscape';
+        // $search = $desc . ', Africa';
+        // $page = 6;
+        // $per_page = 15;
+        // $orientation = 'landscape';
 
         $pixabayClient = new \Pixabay\PixabayClient([
             'key' => '44352890-0bad1da01135aeecd7217db19'

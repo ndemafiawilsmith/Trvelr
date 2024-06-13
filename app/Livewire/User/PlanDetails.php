@@ -41,7 +41,7 @@ class PlanDetails extends Component
         ]);
 
         // test it out
-        $results = $pixabayClient->get(['q' => 'Touristic Areas cameroon '], true);
+        $results = $pixabayClient->get(['q' => $desc.', Africa'], true);
 
         $country = country::where('countryname', $desc)->first();
         $CountryImages = countryImages::where('country_id', $country->id)->count();

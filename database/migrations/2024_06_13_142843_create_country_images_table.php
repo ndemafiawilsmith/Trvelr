@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('country_id')->constrained('country')->onDelete('cascade');
             $table->string('previewURL');
-            $table->string('imgeURL')->nullable();
+            $table->string('imageURL')->nullable();
             $table->string('tags');
             $table->string('status')->nullable();
             $table->string('type')->nullable();

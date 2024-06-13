@@ -2,6 +2,7 @@
 
 namespace App\Livewire\User;
 
+use App\Models\countryImages;
 use App\Models\itinerarie;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -13,13 +14,15 @@ class PlanDetails extends Component
 {
     public $itineraryDet;
     public $activities;
-    public function mount($id){
-        $this->dispatch('clickk', el:'dashboard');
+    public function mount($id)
+    {
+        $this->dispatch('clickk', el: 'dashboard');
         $this->itineraryDet = itinerarie::findorfail($id);
     }
 
 
-    public function getImages($desc){
+    public function getImages($desc)
+    {
         HttpClient::init([
             'applicationId' => 'uCZgmxagUe6CE2fm_MjiIEwpY3iQIMFH6y5RhfsKYKU',
             'secret' => 'SUoyUSmVGnunDfCCBR9X24y_PDcLS3F8LQ_cZmy0bx4',
@@ -27,10 +30,30 @@ class PlanDetails extends Component
             'utmSource' => 'Trvelr'
         ]);
 
-        $search = $desc. ', Africa';
+        $search = $desc . ', Africa';
         $page = 6;
         $per_page = 15;
         $orientation = 'landscape';
+
+        $pixabayClient = new \Pixabay\PixabayClient([
+            'key' => '44352890-0bad1da01135aeecd7217db19'
+        ]);
+
+        // test it out
+        $results = $pixabayClient->get(['q' => 'Touristic Areas cameroon '], true);
+
+        foreach ($results['hits'] as $images) {
+            countryImages::create(
+                [
+                    'country_id' => $images['country_id'],
+                    'previewURL' => $images['previewURL'],
+                    'imageURL' => $images['imageURL'], // Note: In your schema, the column name is 'imgeURL', correct if needed
+                    'tags' => $images['tags'],
+                    'status' => 1,
+                    'type' => 'api',
+                ]
+            );
+        }
 
         return Search::photos($search, $page, $per_page, $orientation)->getResults();
 
@@ -48,6 +71,4 @@ class PlanDetails extends Component
         // dd($activities);
         return view('livewire.user.plan-details', with(compact('itinerary', 'photos', 'activities')));
     }
-
-
 }

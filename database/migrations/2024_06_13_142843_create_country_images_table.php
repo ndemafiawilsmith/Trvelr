@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('country_images', function (Blueprint $table) {
             $table->id();
             $table->foreignId('country_id')->constrained('country')->onDelete('cascade');
-            $table->string('link');
+            $table->string('previewURL');
+            $table->string('imgeURL')->nullable();
+            $table->string('tags');
             $table->string('status')->nullable();
             $table->string('type')->nullable();
             $table->timestamps();

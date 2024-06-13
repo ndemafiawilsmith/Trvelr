@@ -8,6 +8,7 @@ use App\Livewire\Home;
 use App\Livewire\User\AddPlans;
 use App\Livewire\User\ComputePlan;
 use App\Livewire\User\Dashboard;
+use App\Livewire\User\PlanDetails;
 use App\Livewire\User\ViewPlans;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +45,7 @@ Route::middleware(['role:user'])->group(function () {
     // Plans
     Route::get('/plans', ViewPlans::class)->name('plans');
     Route::get('/add-plan', AddPlans::class)->name('add.plan');
+    Route::get('/plan/{id}', PlanDetails::class)->name('plan.details');
 
     // Compute Itinerary
     Route::get('/compute/plan/{id}', ComputePlan::class)->name('compute');

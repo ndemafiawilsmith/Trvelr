@@ -19,8 +19,8 @@ return new class extends Migration
             $table->decimal('budget', 10, 2); // Assuming budget is a decimal value
             $table->date('start_date');
             $table->date('end_date');
-            $table->json('activities'); // JSON column for activities
-            $table->json('travel_companions'); // JSON column for travel companions
+            $table->json('activities')->nullable(); // JSON column for activities
+            $table->json('travel_companions')->nullable(); // JSON column for travel companions
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@ class ComputePlan extends Component
     public function mount($id)
     {
         $itinerary = itinerarie::findOrFail($id);
-
+        $this->itinerary = $itinerary;
         // Extract necessary details from the itinerary
         $budget = $itinerary->budget;
         $destination = $itinerary->country->countryname;
@@ -25,6 +25,7 @@ class ComputePlan extends Component
         $endDate = $itinerary->end_date;
         $allergies = Auth::user()->allergies; // Assuming allergies are fixed or can be set similarly
         $allergies = implode(", ", $allergies);
+        $remark = $itinerary->remark;
 
         // Create the prompt
         $prompt = "
@@ -35,6 +36,7 @@ class ComputePlan extends Component
     - Start Date: $startDate
     - End Date: $endDate
     - Allergies: $allergies
+    - User Remark: $remark
 
     Based on these details, generate a diverse and engaging itinerary that includes daily activities, specific times, locations, and the budget for each activity. Ensure the activities are suitable for the user's overall budget and preferences, and consider the allergy information when suggesting meal options. Provide activities that highlight local culture, adventure, and natural beauty. The output should be formatted as JSON.
 
@@ -69,6 +71,22 @@ class ComputePlan extends Component
 
         // Run Gemini API call asynchronously
         $this->generateItinerary($prompt);
+
+
+        // Clean Json
+        // Remove everything before the first '['
+        $json = preg_replace('/^[^\[]*\[/', '[', $this->result);
+
+        // // Remove everything after the last ']'
+        $json = preg_replace('/\][^\]]*$/', ']', $json);
+
+
+        // check if it's json first then add Json to itinirary table
+        $this->itinerary->update(['activities' => $json]);
+
+        // Redirect to itinerary details page
+        return redirect()->route('plan.details', ['id' => $id]);
+
     }
 
 
@@ -89,23 +107,9 @@ class ComputePlan extends Component
     {
         // dd($this->result);
 
-        // Clean Json
-        // Remove everything before the first '['
-        $json = preg_replace('/^[^\[]*\[/', '[', $this->result);
-
-        // // Remove everything after the last ']'
-        $json = preg_replace('/\][^\]]*$/', ']', $json);
-
         // Now $json contains the cleaned JSON string
         // dd($json);
-        dd(json_decode($json, true));
-        return view(
-            'livewire.user.compute-plan'
-            // , [
-            //     'itinerary' => $this->itinerary,
-            //     'result' => $this->result,
-            //     'loading' => $this->loading,
-            // ]
-        );
+        // dd(json_decode($json, true));
+        return view('livewire.user.compute-plan');
     }
 }

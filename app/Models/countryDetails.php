@@ -21,5 +21,7 @@ class countryDetails extends Model
         'flag',
     ];
 
+    // Add Realtionships
+
 
 }

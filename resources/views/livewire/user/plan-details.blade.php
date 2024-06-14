@@ -156,7 +156,7 @@
             <div class="galleryGrid -type-1 pt-30">
                 <div class="galleryGrid__item relative d-flex">
                     @php
-                        $first = $photos[0]['imageURL'];
+                        $first = $photos[0]['previewURL'];
                     @endphp
                     <img src="{{ $first }}" alt="image" class="rounded-4">
 
@@ -168,7 +168,7 @@
                 </div>
 
                 @php
-                    $second = $photos[1]['imageURL'];
+                    $second = $photos[1]['previewURL'];
                 @endphp
                 <div class="galleryGrid__item">
                     <img src="{{ $second }}" alt="image" class="rounded-4">
@@ -176,7 +176,7 @@
 
 
                 @php
-                    $third = $photos[2]['imageURL'];
+                    $third = $photos[2]['previewURL'];
                 @endphp
                 <div class="galleryGrid__item relative d-flex">
                     <img src="{{ $third }}" alt="image" class="rounded-4">
@@ -192,7 +192,7 @@
 
 
                 @php
-                    $fourth = $photos[3]['imageURL'];
+                    $fourth = $photos[3]['previewURL'];
                 @endphp
                 <div class="galleryGrid__item">
                     <img src="{{ $fourth }}" alt="image" class="rounded-4">
@@ -200,20 +200,20 @@
 
 
                 @php
-                    $fifth = $photos[4]['imageURL'];
+                    $fifth = $photos[4]['previewURL'];
                 @endphp
                 <div class="galleryGrid__item relative d-flex">
                     <img src="{{ $fifth }}" alt="image" class="rounded-4">
 
-                    {{-- <div class="absolute px-10 py-10 col-12 h-full d-flex justify-end items-end">
-                <a href="img/gallery/1/1.png" class="button -blue-1 px-24 py-15 bg-white text-dark-1 js-gallery" data-gallery="gallery2">
-                  See All 90 Photos
+                    <div class="absolute px-10 py-10 col-12 h-full d-flex justify-end items-end">
+                <a href="javascript:void(0);" class="button -blue-1 px-24 py-15 bg-white text-dark-1 js-gallery" data-gallery="gallery2">
+                  Credits Pixabay
                 </a>
                 <a href="img/gallery/1/2.png" class="js-gallery" data-gallery="gallery2"></a>
                 <a href="img/gallery/1/3.png" class="js-gallery" data-gallery="gallery2"></a>
                 <a href="img/gallery/1/4.png" class="js-gallery" data-gallery="gallery2"></a>
                 <a href="img/gallery/1/5.png" class="js-gallery" data-gallery="gallery2"></a>
-              </div> --}}
+              </div>
                 </div>
             </div>
         </div>
@@ -224,7 +224,7 @@
             <div class="row y-gap-30">
                 <div class="col-xl-8">
                     <div class="row y-gap-40">
-                        <div class="col-12">
+                        {{-- <div class="col-12">
                             <h3 class="text-22 fw-500">Property highlights</h3>
                             <div class="row y-gap-20 pt-30">
 
@@ -257,71 +257,97 @@
                                 </div>
 
                             </div>
+                        </div> --}}
+
+
+                        <div class="col-12">
+                            <h3 class="text-22 fw-500 pt-40 border-top-light">Destination Highlights</h3>
+                            <div class="row y-gap-10 pt-20">
+
+                                <div class="col-md-5">
+                                    <div class="d-flex x-gap-15 y-gap-15 items-center">
+                                        <i class="fas fa-language"></i>
+                                        @php
+                                            $languages = json_decode($countryDetails->official_languages, true);
+                                        @endphp
+                                        <div class="text-15">
+                                            @php
+                                                $lang =  (count($languages) > 1) ?   "Languages"  : "Language";
+                                            @endphp
+                                            @if (is_array($languages))
+                                                {{$lang . ": ". implode(', ', $languages) }}
+                                            @endif
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <div class="d-flex x-gap-15 y-gap-15 items-center">
+                                        <i class="fas fa-city"></i>
+                                        <div class="text-15">{{ "Capital: " .$countryDetails->capital_city }}</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <div class="d-flex x-gap-15 y-gap-15 items-center">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                        <div class="text-15">Currency: {{ $countryDetails->currency }}</div>
+                                    </div>
+                                </div>
+                                @php
+                                    // Function to format the population number
+                                    function formatPopulation($population) {
+                                        if ($population >= 1000000) {
+                                            // Format in millions
+                                            return number_format($population / 1000000, 2) . ' million';
+                                        } elseif ($population >= 100000) {
+                                            // Format in hundred thousands
+                                            return number_format($population / 100000, 2) . ' hundred thousand';
+                                        } else {
+                                            // Format with commas
+                                            return number_format($population);
+                                        }
+                                    }
+                                @endphp
+                                <div class="col-md-5">
+                                    <div class="d-flex x-gap-15 y-gap-15 items-center">
+                                        <i class="fas fa-users"></i>
+                                        <div class="text-15">Population {{ formatPopulation($countryDetails->population) }}</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <div class="d-flex x-gap-15 y-gap-15 items-center">
+                                        <i class="fas fa-clock"></i>
+                                        @php
+                                            $timezone = json_decode($countryDetails->time_zones, true);
+                                        @endphp
+                                        <div class="text-15">Time Zone:
+                                            @if (is_array($timezone))
+                                                {{implode(', ', $timezone) }}
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{-- <div class="col-md-5">
+                                    <div class="d-flex x-gap-15 y-gap-15 items-center">
+                                        <i class="icon-shield"></i>
+                                        <div class="text-15">Safety &amp; security</div>
+                                    </div>
+                                </div> --}}
+
+                            </div>
                         </div>
 
                         <div id="overview" class="col-12">
                             <h3 class="text-22 fw-500 pt-40 border-top-light">Overview</h3>
                             <p class="text-dark-1 text-15 mt-20">
-                                You can directly book the best price if your travel dates are available, all discounts
-                                are already included. In the following house description you will find all information
-                                about our listing.
-                                <br><br>
-                                2-room terraced house on 2 levels. Comfortable and cosy furnishings: 1 room with 1
-                                french bed and radio. Shower, sep. WC. Upper floor: (steep stair) living/dining room
-                                with 1 sofabed (110 cm, length 180 cm), TV. Exit to the balcony. Small kitchen (2 hot
-                                plates, oven,
+                                {{$countryDetails->description}}
                             </p>
-                            <a href="#" class="d-block text-14 text-blue-1 fw-500 underline mt-10">Show More</a>
+                            {{-- <a href="#" class="d-block text-14 text-blue-1 fw-500 underline mt-10">Show More</a> --}}
                         </div>
 
-                        <div class="col-12">
-                            <h3 class="text-22 fw-500 pt-40 border-top-light">Most Popular Facilities</h3>
-                            <div class="row y-gap-10 pt-20">
-
-                                <div class="col-md-5">
-                                    <div class="d-flex x-gap-15 y-gap-15 items-center">
-                                        <i class="icon-no-smoke"></i>
-                                        <div class="text-15">Non-smoking rooms</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5">
-                                    <div class="d-flex x-gap-15 y-gap-15 items-center">
-                                        <i class="icon-wifi"></i>
-                                        <div class="text-15">Free WiFi</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5">
-                                    <div class="d-flex x-gap-15 y-gap-15 items-center">
-                                        <i class="icon-parking"></i>
-                                        <div class="text-15">Parking</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5">
-                                    <div class="d-flex x-gap-15 y-gap-15 items-center">
-                                        <i class="icon-kitchen"></i>
-                                        <div class="text-15">Kitchen</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5">
-                                    <div class="d-flex x-gap-15 y-gap-15 items-center">
-                                        <i class="icon-living-room"></i>
-                                        <div class="text-15">Living Area</div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5">
-                                    <div class="d-flex x-gap-15 y-gap-15 items-center">
-                                        <i class="icon-shield"></i>
-                                        <div class="text-15">Safety &amp; security</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
 
                         {{-- <div class="col-12">
                             <div class="px-24 py-20 rounded-4 bg-green-1">

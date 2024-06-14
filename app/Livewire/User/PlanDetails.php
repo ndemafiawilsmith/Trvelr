@@ -3,6 +3,7 @@
 namespace App\Livewire\User;
 
 use App\Models\country;
+use App\Models\countryDetails;
 use App\Models\countryImages;
 use App\Models\itinerarie;
 use Livewire\Attributes\Layout;
@@ -24,18 +25,6 @@ class PlanDetails extends Component
 
     public function getImages($desc)
     {
-        // Deprected Api
-        // HttpClient::init([
-        //     'applicationId' => 'uCZgmxagUe6CE2fm_MjiIEwpY3iQIMFH6y5RhfsKYKU',
-        //     'secret' => 'SUoyUSmVGnunDfCCBR9X24y_PDcLS3F8LQ_cZmy0bx4',
-        //     'callbackUrl' => 'https://your-application.com/oauth/callback',
-        //     'utmSource' => 'Trvelr'
-        // ]);
-
-        // $search = $desc . ', Africa';
-        // $page = 6;
-        // $per_page = 15;
-        // $orientation = 'landscape';
 
         $pixabayClient = new \Pixabay\PixabayClient([
             'key' => '44352890-0bad1da01135aeecd7217db19'
@@ -75,7 +64,9 @@ class PlanDetails extends Component
         $desc = $itinerary->country->countryname;
         $photos = $this->getImages($desc);
         $activities = json_decode($itinerary->activities, true);
-        // dd($activities);
-        return view('livewire.user.plan-details', with(compact('itinerary', 'photos', 'activities')));
+
+        // Get Country Deatils
+        $countryDetails = countryDetails::where('country_id', $itinerary->country->id)->first();
+        return view('livewire.user.plan-details', with(compact('itinerary', 'photos', 'activities', 'countryDetails')));
     }
 }

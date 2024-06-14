@@ -15,67 +15,6 @@ class Test extends Component
 {
     public function mount()
     {
-        $countries  = country::where('id', '>=', 56)->get();
-        // dd($countries);
-        foreach($countries as $country){
-
-            $prompt = "
-            Please provide detailed information about $country->countryname in JSON format. The information should include the following fields:
-
-            1. Country Overview:
-            - description
-            - country_name
-            - capital_city
-            - official_languages
-            - currency
-            - population (as a number)
-            - time_zone
-
-            Here's an example of the JSON format I expect, with the population formatted correctly:
-            '''json
-            {
-                \"description\": \"A brief description of the country\",
-                \"country_name\": \"Country Name\",
-                \"capital_city\": \"Capital City\",
-                \"official_languages\": [\"Language1\", \"Language2\"],
-                \"currency\": \"Currency Name\",
-                \"population\": 12345678,
-                \"time_zone\": [\"Time Zone1\", \"Time Zone2\"],
-                \"flag\": \"URL to the image of the flag\"
-            }
-            '''
-
-            Make sure the response is pure json no extra strings or characters added.
-        ";
-        $stream = Gemini::geminipro()->streamGenerateContent($prompt);
-        $content = "";
-        foreach ($stream as $response) {
-            $content .= $response->text();
-        }
-
-        $jon = $content;
-
-        //  // Clean Json
-        // Remove everything before the first '['
-        $json = preg_replace('/^[^\[]*\{/', '{', $jon);
-
-        // // Remove everything after the last ']'
-        $json = preg_replace('/\}[^\]]*$/', '}', $json);
-
-        $data = json_decode($json, true);
-        // dd($json, $data);
-        countryDetails::create([
-            'country_id' => $country->id, // Assuming country_id 1 exists in your countries table
-            'description' => $data['description'],
-            'name' => $data['country_name'],
-            'capital_city' => $data['capital_city'],
-            'official_languages' => json_encode($data['official_languages']),
-            'currency' => $data['currency'],
-            'population' => $data['population'],
-            'time_zones' => json_encode($data['time_zone'])
-        ]);
-
-        }
 
     }
     public function render()

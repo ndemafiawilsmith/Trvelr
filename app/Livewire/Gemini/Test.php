@@ -15,7 +15,7 @@ class Test extends Component
 {
     public function mount()
     {
-        $countries  = country::where('id', '>=', 4)->get();
+        $countries  = country::where('id', '>=', 12)->get();
         // dd($countries);
         foreach($countries as $country){
 

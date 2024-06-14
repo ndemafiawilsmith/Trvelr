@@ -37,6 +37,6 @@ class itinerarie extends Model
 
     public function country()
     {
-        return $this->belongsTo(Country::class, 'destination');
+        return $this->belongsTo(country::class, 'destination');
     }
 }

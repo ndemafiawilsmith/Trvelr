@@ -55,34 +55,34 @@
 
 
     <div class="header-margin"></div>
-        <header data-add-bg="" class="header -dashboard bg-white js-header" data-x="header" data-x-toggle="is-menu-opened">
-            <div data-anim="fade" class="header__container px-30 sm:px-20">
-                <div class="-left-side">
-                    <a href="index.html" class="header-logo" data-x="header-logo" data-x-toggle="is-logo-dark">
-                        <img src="{{ asset('img/general/logo-dark.svg') }}" alt="logo icon">
-                        <img src="{{ asset('img/general/logo-dark.svg') }}" alt="logo icon">
-                    </a>
-                </div>
+    <header data-add-bg="" class="header -dashboard bg-white js-header" data-x="header" data-x-toggle="is-menu-opened">
+        <div data-anim="fade" class="header__container px-30 sm:px-20">
+            <div class="-left-side">
+                <a href="index.html" class="header-logo" data-x="header-logo" data-x-toggle="is-logo-dark">
+                    <img src="{{ asset('img/general/logo-dark.svg') }}" alt="logo icon">
+                    <img src="{{ asset('img/general/logo-dark.svg') }}" alt="logo icon">
+                </a>
+            </div>
 
-                <div class="row justify-between items-center pl-60 lg:pl-20">
-                    <div class="col-auto">
-                        <div class="d-flex items-center">
-                            <button data-x-click="dashboard">
-                                <i class="icon-menu-2 text-20"></i>
+            <div class="row justify-between items-center pl-60 lg:pl-20">
+                <div class="col-auto">
+                    <div class="d-flex items-center">
+                        <button data-x-click="dashboard">
+                            <i class="icon-menu-2 text-20"></i>
+                        </button>
+
+                        <div class="single-field relative d-flex items-center md:d-none ml-30">
+                            <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="email"
+                                placeholder="Search">
+                            <button class="absolute d-flex items-center h-full">
+                                <i class="icon-search text-20 px-15 text-dark-1"></i>
                             </button>
-
-                            <div class="single-field relative d-flex items-center md:d-none ml-30">
-                                <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="email"
-                                    placeholder="Search">
-                                <button class="absolute d-flex items-center h-full">
-                                    <i class="icon-search text-20 px-15 text-dark-1"></i>
-                                </button>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
 
 
     <div class="dashboard" data-x="dashboard" data-x-toggle="-is-sidebar-open">
@@ -92,8 +92,8 @@
             <div class="sidebar -dashboard">
 
                 <div class="sidebar__item">
-                    <div class="sidebar__button -is-active">
-                        <a href="db-dashboard.html" class="d-flex items-center text-15 lh-1 fw-500">
+                    <div class="sidebar__button @if(Route::currentRouteName() == 'user.dashboard') -is-active @endif">
+                        <a href="{{ route('user.dashboard') }}" class="d-flex items-center text-15 lh-1 fw-500">
                             <img src="{{ asset('img/dashboard/sidebar/compass.svg') }}" alt="image" class="mr-15">
                             Dashboard
                         </a>
@@ -101,7 +101,7 @@
                 </div>
 
                 <div class="sidebar__item">
-                    <div class="sidebar__button ">
+                    <div class="sidebar__button  @if(Route::currentRouteName() == 'plans') -is-active @endif">
                         <a href="{{ route('plans') }}" class="d-flex items-center text-15 lh-1 fw-500">
                             <img src="{{ asset('img/dashboard/sidebar/bookmark.svg') }}" alt="image" class="mr-15">
                             Planner
@@ -110,13 +110,21 @@
                 </div>
 
                 <div class="sidebar__item">
+                    <div class="sidebar__button  @if(Route::currentRouteName() == 'savings') -is-active @endif">
+                        <a href="db-booking.html" class="d-flex items-center text-15 lh-1 fw-500">
+                            <img src="{{ asset('img/dashboard/icons/2.svg') }}" width="30px" alt="image" class="mr-15">
+                            Savings
+                        </a>
+                    </div>
+                </div>
+                {{-- <div class="sidebar__item">
                     <div class="sidebar__button ">
                         <a href="db-booking.html" class="d-flex items-center text-15 lh-1 fw-500">
                             <img src="{{ asset('img/dashboard/sidebar/booking.svg') }}" alt="image" class="mr-15">
                             Booking History
                         </a>
                     </div>
-            </div>
+                </div>
 
                 <div class="sidebar__item">
                     <div class="sidebar__button ">
@@ -125,7 +133,7 @@
                             Settings
                         </a>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="sidebar__item">
                     <div class="sidebar__button ">
@@ -183,21 +191,20 @@
     </div>
 
 
-    @if (Route::currentRouteName() == "plan.details")
-
-    <script>
-            window.addEventListener('clickk',event => {
+    @if (Route::currentRouteName() == 'plan.details')
+        <script>
+            window.addEventListener('clickk', event => {
                 const target = document.querySelector(`[data-x=dashboard]`);
                 const toggleClass = target.getAttribute('data-x-toggle');
                 target.classList.toggle(toggleClass);
-            // toastr.options =
-            //         {
-            //             "closeButton" : true,
-            //             "progressBar" : true
-            //         }
-            // toastr.error(event.detail.errfeedback);
-        });
-    </script>
+                // toastr.options =
+                //         {
+                //             "closeButton" : true,
+                //             "progressBar" : true
+                //         }
+                // toastr.error(event.detail.errfeedback);
+            });
+        </script>
     @endif
     <!-- JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"

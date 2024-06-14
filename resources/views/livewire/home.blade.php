@@ -10,8 +10,8 @@
           <div class="row justify-center">
             <div class="col-auto">
               <div class="text-center">
-                <h1 data-anim-child="slide-up delay-4" class="text-60 lg:text-40 md:text-30 text-white">Find Next Place To Visit</h1>
-                <p data-anim-child="slide-up delay-5" class="text-white mt-6 md:mt-10">Discover amzaing places at exclusive deals</p>
+                <h1 data-anim-child="slide-up delay-4" class="text-60 lg:text-40 md:text-30 text-white">Plan Your Perfect Trip with AI</h1>
+                <p data-anim-child="slide-up delay-5" class="text-white mt-6 md:mt-10">Experience tailored itineraries and exclusive deals powered by artificial intelligence</p>
               </div>
 
               <div data-anim-child="slide-up delay-6" class="tabs -underline mt-60 js-tabs">

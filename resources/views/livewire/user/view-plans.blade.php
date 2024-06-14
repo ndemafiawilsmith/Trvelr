@@ -25,7 +25,7 @@
                         data-tab-target=".-tab-item-1">All Plans</button>
                 </div>
 
-                <div class="col-auto">
+                {{-- <div class="col-auto">
                     <button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button "
                         data-tab-target=".-tab-item-2">Completed</button>
                 </div>
@@ -48,7 +48,7 @@
                 <div class="col-auto">
                     <button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button "
                         data-tab-target=".-tab-item-6">Paid</button>
-                </div>
+                </div> --}}
 
                 {{-- <div class="col-auto">
               <button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button "
@@ -115,10 +115,7 @@
                                                         <div><a href="#" class="d-block js-dropdown-link">Details</a>
                                                         </div>
 
-                                                        <div><a href="#" class="d-block js-dropdown-link">Invoice</a>
-                                                        </div>
-
-                                                        <div><a href="#" class="d-block js-dropdown-link">Confirm</a>
+                                                        <div><a href="#" class="d-block js-dropdown-link">Save</a>
                                                         </div>
 
                                                         <div><a href="#" class="d-block js-dropdown-link">Cancel</a>

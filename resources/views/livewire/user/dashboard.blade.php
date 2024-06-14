@@ -133,11 +133,11 @@
             <div class="py-30 px-30 rounded-4 bg-white shadow-3">
                 <div class="d-flex justify-between items-center">
                     <h2 class="text-18 lh-1 fw-500">
-                        Recent Bookings
+                        Recent Plans
                     </h2>
 
                     <div class="">
-                        <a href="#" class="text-14 text-blue-1 fw-500 underline">View All</a>
+                        <a href="{{ route('plans') }}" class="text-14 text-blue-1 fw-500 underline">View All</a>
                     </div>
                 </div>
 
@@ -146,79 +146,32 @@
                         <thead class="">
                             <tr>
                                 <th>#</th>
-                                <th>Item</th>
-                                <th>Total</th>
-                                <th>Paid</th>
+                                <th>Country</th>
+                                <th>Budget</th>
+                                <th>Saved</th>
                                 <th>Status</th>
                                 <th>Created At</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            <tr>
-                                <td>#1</td>
-                                <td>New York<br> Discover America</td>
-                                <td class="fw-500">$130</td>
-                                <td>$0</td>
-                                <td>
-                                    <div
-                                        class="rounded-100 py-4 text-center col-12 text-14 fw-500 bg-yellow-4 text-yellow-3">
-                                        Pending</div>
-                                </td>
-                                <td>04/04/2022<br>08:16</td>
-                            </tr>
-
-                            <tr>
-                                <td>#2</td>
-                                <td>New York<br> Discover America</td>
-                                <td class="fw-500">$130</td>
-                                <td>$0</td>
-                                <td>
-                                    <div
-                                        class="rounded-100 py-4 text-center col-12 text-14 fw-500 bg-blue-1-05 text-blue-1">
-                                        Confirmed</div>
-                                </td>
-                                <td>04/04/2022<br>08:16</td>
-                            </tr>
-
-                            <tr>
-                                <td>#3</td>
-                                <td>New York<br> Discover America</td>
-                                <td class="fw-500">$130</td>
-                                <td>$0</td>
-                                <td>
-                                    <div
-                                        class="rounded-100 py-4 text-center col-12 text-14 fw-500 bg-red-3 text-red-2">
-                                        Rejected</div>
-                                </td>
-                                <td>04/04/2022<br>08:16</td>
-                            </tr>
-
-                            <tr>
-                                <td>#4</td>
-                                <td>New York<br> Discover America</td>
-                                <td class="fw-500">$130</td>
-                                <td>$0</td>
-                                <td>
-                                    <div
-                                        class="rounded-100 py-4 text-center col-12 text-14 fw-500 bg-blue-1-05 text-blue-1">
-                                        Confirmed</div>
-                                </td>
-                                <td>04/04/2022<br>08:16</td>
-                            </tr>
-
-                            <tr>
-                                <td>#5</td>
-                                <td>New York<br> Discover America</td>
-                                <td class="fw-500">$130</td>
-                                <td>$0</td>
-                                <td>
-                                    <div
-                                        class="rounded-100 py-4 text-center col-12 text-14 fw-500 bg-blue-1-05 text-blue-1">
-                                        Confirmed</div>
-                                </td>
-                                <td>04/04/2022<br>08:16</td>
-                            </tr>
+                            @foreach ($plans as $plan)
+                            @php
+                                $plan->start_date = Carbon\Carbon::parse($plan->start_date);
+                            @endphp
+                                <tr>
+                                    <td>#{{ $loop->iteration }}</td>
+                                    <td>{{ $plan->country->countryname }}</td>
+                                    <td class="fw-500">${{ number_format($plan->budget, 0, '.', ',') }}</td>
+                                    <td>$0</td>
+                                    <td>
+                                        <div
+                                            class="rounded-100 py-4 text-center col-12 text-14 fw-500 bg-yellow-4 text-yellow-3">
+                                            Pending</div>
+                                    </td>
+                                    <td>{{ $plan->start_date->format('d/m/Y') }}</td>
+                                </tr>
+                            @endforeach
 
                         </tbody>
                     </table>

@@ -102,7 +102,7 @@ window.onclick = function(event) {
     if (allDD) {
       allDD.forEach((el) => { el.classList.remove('-is-el-visible') })
     }
-  
+
     const allActiveDD = document.querySelectorAll('.-is-dd-active')
     if (allActiveDD) {
       allActiveDD.forEach((el) => el.classList.remove('-is-dd-active'))
@@ -112,7 +112,7 @@ window.onclick = function(event) {
   if (!event.target.closest('.js-select')) {
     const targets = document.querySelectorAll('.js-select')
     if (!targets) return
-    
+
     targets.forEach(el => {
       if (el.querySelector('.-is-visible')) {
         el.querySelector('.-is-visible').classList.remove('-is-visible')
@@ -123,7 +123,7 @@ window.onclick = function(event) {
   if (!event.target.closest('.js-multiple-select')) {
     const targets = document.querySelectorAll('.js-multiple-select')
     if (!targets) return
-    
+
     targets.forEach(el => {
       if (el.querySelector('.-is-visible')) {
         el.querySelector('.-is-visible').classList.remove('-is-visible')
@@ -141,7 +141,7 @@ function languageSwitch() {
 
   items.forEach(el => {
     const title = el.querySelector('.js-title')
-    
+
     el.addEventListener("click", () => {
       if (modal.querySelector('.-is-active')) {
         modal.querySelector('.-is-active').classList.remove("-is-active")
@@ -164,7 +164,7 @@ function priceSwitch() {
 
   items.forEach(el => {
     const title = el.querySelector('.js-title')
-    
+
     el.addEventListener("click", () => {
       if (modal.querySelector('.-is-active')) {
         modal.querySelector('.-is-active').classList.remove("-is-active")
@@ -296,33 +296,33 @@ function timeRangeSliderInit() {
           const string = value.toString()
           let newVal
           let time
-          
+
           if (string.includes('.5')) {
             newVal = string.substr(0, string.indexOf('.')) + ':30'
           } else {
             newVal = parseInt(string).toFixed(0) + ':00'
           }
-  
+
           if (string.substr(0, 2) > 9) {
             newVal = newVal + " PM"
           } else {
             newVal = newVal + " AM"
           }
-          
+
           return newVal
         },
-  
+
         from: function (value) {
           return value;
         }
       }
     })
-  
+
     const snapValues = [
       el.querySelector('.js-lower'),
       el.querySelector('.js-upper')
     ]
-  
+
     slider.noUiSlider.on('update', function (values, handle) {
       snapValues[handle].innerHTML = values[handle];
     })
@@ -347,18 +347,18 @@ function priceRangeSliderInit() {
         to: function (value) {
           return "$" + value
         },
-  
+
         from: function (value) {
           return value;
         }
       }
     })
-  
+
     const snapValues = [
       el.querySelector('.js-lower'),
       el.querySelector('.js-upper')
     ]
-  
+
     slider.noUiSlider.on('update', function (values, handle) {
       snapValues[handle].innerHTML = values[handle];
     })
@@ -371,14 +371,14 @@ function parallaxIt() {
   target.forEach(container => {
     const $this = container
     const targets = container.querySelectorAll('.js-mouse-move')
-    
+
     targets.forEach(el => {
       const movement = el.getAttribute('data-move')
 
       document.addEventListener('mousemove', (e) => {
         const relX = e.pageX - $this.offsetLeft
         const relY = e.pageY - $this.offsetTop
-      
+
         gsap.to(el, {
           x: (relX - $this.offsetWidth / 2) / $this.offsetWidth * movement,
           y: (relY - $this.offsetHeight / 2) / $this.offsetHeight * movement,
@@ -401,7 +401,7 @@ function lineChart() {
       ],
       datasets: [{
         label: '#',
-        data: [148, 100, 205, 110, 165, 145, 180, 156, 148, 220, 180, 245],
+        data: [148, 100, 0, 0, 165, 145, 180, 156, 148],
         tension: 0.4,
         backgroundColor: '#336CFB',
         borderColor: '#336CFB',
@@ -434,7 +434,7 @@ function pinOnScroll() {
 
   target.forEach(el => {
     let itemOffset
-    
+
     if (el.querySelector('.js-pin-content').getAttribute('data-offset')) {
       itemOffset = el.querySelector('.js-pin-content').getAttribute('data-offset')
     } else {
@@ -508,20 +508,20 @@ function clickElToggle() {
 
     const attrActive = el.getAttribute('data-el-toggle-active')
     const activeElement = document.querySelector(attrActive)
-    
+
     el.addEventListener('click', () => {
       const allDD = document.querySelectorAll('.js-click-dropdown.-is-el-visible')
       if (allDD) {
         allDD.forEach((el) => el.classList.remove('-is-el-visible'))
       }
-      
+
       const allActiveDD = document.querySelectorAll('.-is-dd-active')
       if (allActiveDD) {
         allActiveDD.forEach((el) => el.classList.remove('-is-dd-active'))
       }
 
       openElement.classList.toggle('-is-el-visible')
-      if (activeElement) 
+      if (activeElement)
         activeElement.classList.toggle('-is-dd-active')
     })
   });
@@ -530,7 +530,7 @@ function clickElToggle() {
 function dropDown() {
   const target = document.querySelectorAll('.js-dropdown')
   if (!target) return;
-  
+
   target.forEach(el => {
     const items = el.querySelectorAll('.js-dropdown-list .js-dropdown-link')
     const title = el.querySelector('.js-dropdown-title')
@@ -569,7 +569,7 @@ class HTMLMapMarker extends google.maps.OverlayView {
   createDiv() {
     this.div = document.createElement('div');
     this.div.style.position = 'absolute';
-    
+
     if (this.html) {
       this.div.innerHTML = this.html;
     }
@@ -688,7 +688,7 @@ function initMap() {
     google.maps.event.addListener(map, 'click', function() {
       infowindow.close()
     })
-  
+
     marker.addListener("click", () => {
       setTimeout(() => {
         infowindow.open({
@@ -748,7 +748,7 @@ function initMapPlaces() {
     google.maps.event.addListener(map, 'click', function() {
       infowindow.close()
     })
-  
+
     marker.addListener("click", () => {
       setTimeout(() => {
         infowindow.open({
@@ -833,7 +833,7 @@ const Accordion = (function() {
           buttonOrigTitle = titleChange.innerHTML
           buttonNewTitle = titleChange.getAttribute('data-open-change-title')
         }
-        
+
         button.addEventListener("click", (e) => {
           items[l].classList.toggle('is-active');
 
@@ -844,7 +844,7 @@ const Accordion = (function() {
               titleChange.innerHTML = buttonOrigTitle
             }
           }
-  
+
           if (content.style.maxHeight) {
             content.style.maxHeight = null
           } else {
@@ -871,7 +871,7 @@ const ShowMore = (function() {
       const content = el.querySelector('.show-more__content')
       const changingTextButton = el.querySelector('[data-show-more-change-text]')
       const changingText = el.querySelector('[data-show-more-change-text]').getAttribute('data-show-more-change-text').split(', ')
-      
+
       button.addEventListener("click", (e) => {
         el.classList.toggle('is-active')
 
@@ -909,7 +909,7 @@ const Tabs = (function() {
 
     for (let l = 0; l < controlsItems.length; l++) {
       const el = controlsItems[l];
-      
+
       el.addEventListener("click", (e) => {
         const selector = el.getAttribute('data-tab-target');
 
@@ -940,7 +940,7 @@ const RevealAnim = (function() {
 
     for (let i = 0; i < animationTarget.length; i++) {
       const el = animationTarget[i];
-    
+
       new ScrollMagic.Scene({
         offset: '350px',
         triggerElement: el,
@@ -953,18 +953,18 @@ const RevealAnim = (function() {
       .addTo(App.SMcontroller)
     }
   }
-  
+
   function container() {
-  
+
     const animationContainer = document.querySelectorAll('[data-anim-wrap]');
-  
+
     if (!animationContainer.length) {
       return;
     }
-    
+
     for (let i = 0; i < animationContainer.length; i++) {
       const el = animationContainer[i];
-    
+
       new ScrollMagic.Scene({
         offset: '350px',
         triggerElement: el,
@@ -972,35 +972,35 @@ const RevealAnim = (function() {
         reverse: false,
       })
       .on('enter', function (event) {
-        
+
         const animChilds = el.querySelectorAll('[data-anim-child]');
         el.classList.add('animated');
         animChilds.forEach(el => animateElement(el));
-        
+
       })
       .addTo(App.SMcontroller)
     }
-  
+
   }
-  
+
 
   function animateElement(target) {
-    
+
     let attrVal;
     let animDelay;
     let attrDelayPart;
-  
+
     if (target.getAttribute('data-anim')) {
       attrVal = target.getAttribute('data-anim');
     } else {
       attrVal = target.getAttribute('data-anim-child');
     }
-    
+
     if (attrVal.includes('delay-')) {
       attrDelayPart = attrVal.split(' ').pop();
       animDelay = attrDelayPart.substr(attrDelayPart.indexOf('-') + 1) / 10;
     }
-  
+
     if (attrVal.includes('counter')) {
       counter(target, animDelay);
     }
@@ -1020,13 +1020,13 @@ const RevealAnim = (function() {
   }
 
   function pieChart(target, animDelay = 0) {
-  
+
     const counterVal = target.getAttribute('data-percent');
     const chartBar = target.querySelector('.js-chart-bar');
-    
+
     if (counterVal < 0) { counterVal = 0;}
     if (counterVal > 100) { counterVal = 100;}
-    
+
     gsap.fromTo(chartBar, {
       drawSVG: `0%`,
     }, {
@@ -1034,33 +1034,33 @@ const RevealAnim = (function() {
       duration: 1.4,
       ease: 'power3.inOut',
       drawSVG: `${counterVal}%`,
-  
+
       onStart: () => {
         chartBar.classList.remove('bar-stroke-hidden');
       }
     });
-  
-  
+
+
     let object = { count: 0 };
     const barPercent = target.querySelector('.js-chart-percent');
-  
+
     gsap.to(object, {
       count: counterVal,
       delay: 0.45 + animDelay,
       duration: 1,
       ease: 'power3.inOut',
-      
+
       onUpdate: function() {
         barPercent.innerHTML = Math.round(object.count) + '%';
       },
     });
-  
+
   }
-  
+
   function lineChart(target, animDelay = 0) {
-  
+
     const counterVal = target.getAttribute('data-percent');
-  
+
     gsap.fromTo(target.querySelector('.js-bar'), {
       scaleX: 0,
     }, {
@@ -1069,49 +1069,49 @@ const RevealAnim = (function() {
       ease: 'power3.inOut',
       scaleX: counterVal / 100,
     })
-  
-  
+
+
     let object = { count: 0 };
     const barPercent = target.querySelector('.js-number');
-  
+
     gsap.to(object, {
       count: counterVal,
       delay: 0.45 + animDelay,
       duration: 1,
       ease: 'power3.inOut',
-      
+
       onUpdate: function() {
         barPercent.innerHTML = Math.round(object.count);
       },
     });
-  
+
   }
-  
+
   function counter(target, animDelay = 0) {
-  
+
     const counterVal = target.getAttribute('data-counter');
     const counterAdd = target.getAttribute('data-counter-add');
     const totalDelay = animDelay;
     let symbols = '';
-    
+
     let object = { count: 0 };
     const counterNum = target.querySelector('.js-counter-num');
 
     if (counterAdd) {
       symbols = counterAdd;
     }
-  
+
     gsap.to(object, {
       count: counterVal,
       delay: totalDelay,
       duration: 1.8,
       ease: 'power3.inOut',
-      
+
       onUpdate: function() {
         counterNum.innerHTML = Math.round(object.count) + symbols;
       },
     });
-  
+
   }
 
   function init() {
@@ -1134,10 +1134,10 @@ const Select = (function() {
     console.log(target)
     const button = target.querySelector('.js-button')
     const title = button.querySelector('.js-button-title')
-    
+
     button.addEventListener('click', () => {
       let dropdown = target.querySelector('.js-dropdown')
-      
+
       if (dropdown.classList.contains('-is-visible')) {
         dropdown.classList.remove('-is-visible')
       } else {
@@ -1176,21 +1176,21 @@ const Select = (function() {
   function singleSelect(target) {
     const button = target.querySelector('.js-button')
     const title = button.querySelector('.js-button-title')
-    
+
     if (target.classList.contains('js-liveSearch')) {
       liveSearch(target)
     }
 
     button.addEventListener('click', () => {
       let dropdown = target.querySelector('.js-dropdown')
-      
+
       if (dropdown.classList.contains('-is-visible')) {
         dropdown.classList.remove('-is-visible')
       } else {
         closeAlldropdowns()
         dropdown.classList.add('-is-visible')
       }
-      
+
       if (target.classList.contains('js-liveSearch')) {
         target.querySelector('.js-search').focus()
       }
@@ -1211,7 +1211,7 @@ const Select = (function() {
   function liveSearch(target) {
     const search = target.querySelector('.js-search')
     const options = target.querySelectorAll('.js-options > *')
-    
+
     search.addEventListener('input', (event) => {
       let searchTerm = event.target.value.toLowerCase()
 
@@ -1228,7 +1228,7 @@ const Select = (function() {
   function closeAlldropdowns() {
     const targets = document.querySelectorAll('.js-select, .js-multiple-select')
     if (!targets) return
-    
+
     targets.forEach(el => {
       if (el.querySelector('.-is-visible')) {
         el.querySelector('.-is-visible').classList.remove('-is-visible')
@@ -1259,7 +1259,7 @@ function sectionSlider() {
       prevNavElement = document.querySelector(`.${el.getAttribute('data-nav-prev')}`)
     if (el.getAttribute('data-nav-next'))
       nextNavElement = document.querySelector(`.${el.getAttribute('data-nav-next')}`)
-    
+
     let gap = 0;
     let loop = false;
     let centered = false;
@@ -1272,7 +1272,7 @@ function sectionSlider() {
 
     if (el.getAttribute('data-pagination')) {
       let paginationElement = document.querySelector(`.${el.getAttribute('data-pagination')}`)
-      
+
       pagination = {
         el: paginationElement,
         bulletClass: 'pagination__item',
@@ -1288,7 +1288,7 @@ function sectionSlider() {
         draggable: true,
       }
     }
-   
+
     const colsArray = el.getAttribute('data-slider-cols').split(' ');
 
     let cols_base = 1;
@@ -1308,7 +1308,7 @@ function sectionSlider() {
     new Swiper(el, {
       speed: 600,
       autoHeight: true,
-      
+
       centeredSlides: centered,
       parallax: true,
       watchSlidesVisibility: true,
@@ -1317,7 +1317,7 @@ function sectionSlider() {
       preloadImages: false,
       lazy: true,
       width: 250,
-      
+
       scrollbar: scrollbar,
       pagination: pagination,
       spaceBetween: 10,
@@ -1417,7 +1417,7 @@ function testimonialsSlider3() {
     const all = pagination.querySelector('.js-all')
 
     all.innerHTML = `0${slider.slides.length}`
-    slider.on('slideChangeTransitionEnd', () => current.innerHTML = `0${slider.realIndex + 1}`) 
+    slider.on('slideChangeTransitionEnd', () => current.innerHTML = `0${slider.realIndex + 1}`)
   }
 }
 
@@ -1588,10 +1588,10 @@ const Events = (function() {
 
     targets.forEach((eventTarget) => {
       const attributes = eventTarget.getAttribute('data-x-click').split(', ')
-      
+
       attributes.forEach((el) => {
         const target = document.querySelector(`[data-x=${el}]`)
-        
+
         eventTarget.addEventListener('click', () => {
           const toggleClass = target.getAttribute('data-x-toggle')
           target.classList.toggle(toggleClass)
@@ -1607,11 +1607,11 @@ const Events = (function() {
     targets.forEach((el) => {
       const eventTarget = el.querySelector('[data-x-dd-click]')
       const attributes = eventTarget.getAttribute('data-x-dd-click').split(', ')
-      
+
       attributes.forEach((el2) => {
         const target = el.querySelector(`[data-x-dd=${el2}]`)
         const toggleClass = target.getAttribute('data-x-dd-toggle')
-        
+
         eventTarget.addEventListener('click', () => {
           if (eventTarget.querySelector('.js-dd-focus'))
             eventTarget.querySelector('.js-dd-focus').focus()
@@ -1639,12 +1639,12 @@ const Events = (function() {
 
     const targets = document.querySelectorAll(".js-form-dd")
     if (!targets) return
-  
+
     targets.forEach((el) => {
       const eventElement = el.querySelector('[data-x-dd]')
       const eventTarget = el.querySelector('[data-x-dd-click]')
       const attributes = eventTarget.getAttribute('data-x-dd-click').split(', ')
-      
+
       attributes.forEach((el) => {
         eventElement.classList.remove('-is-active')
         const target = document.querySelector(`[data-x-dd=${el}]`)
@@ -1681,7 +1681,7 @@ const Header = (function() {
     navBtnListBack = document.querySelectorAll('.js-nav-list-back');
     menuDeepLevel = 0;
   }
-  
+
   function init() {
     updateVars()
     menuListBindEvents()
@@ -1699,7 +1699,7 @@ const Header = (function() {
       el.addEventListener('click', () => {
         const visibleList = navList.querySelector('ul.-is-active');
         const parentList = visibleList.parentElement.parentElement;
-  
+
         menuDeepLevel--;
         menuListStepAnimate(visibleList, parentList, menuDeepLevel);
       })
@@ -1723,7 +1723,7 @@ const Header = (function() {
     let hideListItems = hideList.children;
     hideListItems = Array.from(hideListItems);
     const hideListLinks = hideListItems.map(item => item.querySelector('li > a'));
-    
+
     let showListItems = showList.children;
     showListItems = Array.from(showListItems);
     const showListLinks = showListItems.map(item => item.querySelector('li > a'));
@@ -1741,7 +1741,7 @@ const Header = (function() {
           opacity: 0,
         })
       }
-      
+
       timeline.to(hideListLinks, {
         ease: 'quart.out',
         stagger: -0.04,
@@ -1776,17 +1776,17 @@ const Header = (function() {
   function headerSticky() {
     const header = document.querySelector('.js-header');
     if (!header) return;
-  
+
     let classList = ''
-  
+
     if (header.getAttribute('data-add-bg')) {
       classList = header.getAttribute('data-add-bg')
     }
-  
+
     new ScrollMagic.Scene({ offset: '6px', })
       .setClassToggle(header, classList)
       .addTo(App.SMcontroller);
-  
+
     new ScrollMagic.Scene({ offset: '6px', })
       .setClassToggle(header, 'is-sticky')
       .addTo(App.SMcontroller);
@@ -1867,7 +1867,7 @@ const Calendar = (function() {
 
     calendarEl.forEach(calendarElement => {
       let calendarGrid = calendarElement.querySelector('.js-calendar-el-calendar')
-      
+
       let allYearMonths = getFullYearDates(`${startMonth}/${startYear}`, monthRange)
       let globalIndex = 0
 
@@ -1890,7 +1890,7 @@ const Calendar = (function() {
                     <div class="elCalendar__header">
                       ${weekDaysOrder.map(el => `<div class="elCalendar__header__sell">${el}</div>`).join('')}
                     </div>
-        
+
                     <div class="elCalendar__body">
                       ${month.firstDates.map(el => `
                         <div
@@ -1902,7 +1902,7 @@ const Calendar = (function() {
                           </span>
                         </div>
                       `).join('')}
-        
+
                       ${month.initialMonthArray.map(el => `
                         <div
                           data-index="${globalIndexUp()}" data-week="${el.weekDay}" data-month="${month.monthName.slice(0, 3)}"
@@ -1949,7 +1949,7 @@ const Calendar = (function() {
       },
     })
   }
-  
+
   return {
     init: init,
   }
@@ -1982,20 +1982,20 @@ function calendarInteraction() {
         if (firstItem && !lastItem) {
           lastItem = el
         }
-        
+
         if (!firstItem) {
           firstItem = el
         }
-        
+
         if (completeState) {
           firstItem = false
           lastItem = false
-          
+
           const array = elTarget.querySelectorAll('.-is-active')
           array.forEach(el2 => {
             el2.classList.remove('-is-active')
           })
-          
+
           const array2 = elTarget.querySelectorAll('.-is-in-path')
           array2.forEach(el2 => {
             el2.classList.remove('-is-in-path')
@@ -2005,7 +2005,7 @@ function calendarInteraction() {
 
         } else if (firstItem && lastItem) {
           const iterationCount = Math.abs(getIndex(firstItem) - getIndex(lastItem))
-    
+
           for (let l = 1; l < iterationCount; l++) {
             const item = elTarget.querySelector(`[data-index="${ getIndex(firstItem) + l }"]`)
             item.classList.add('-is-in-path')
@@ -2013,7 +2013,7 @@ function calendarInteraction() {
 
           firstDate.innerHTML = `${firstItem.getAttribute('data-week')} ${firstItem.querySelector('.js-date').innerHTML} ${firstItem.getAttribute('data-month')}`
           lastDate.innerHTML = `${lastItem.getAttribute('data-week')} ${lastItem.querySelector('.js-date').innerHTML} ${lastItem.getAttribute('data-month')}`
-    
+
           completeState = true
         }
       })
@@ -2051,20 +2051,20 @@ function calendarInteraction2() {
         if (firstItem && !lastItem) {
           lastItem = el
         }
-        
+
         if (!firstItem) {
           firstItem = el
         }
-        
+
         if (completeState) {
           firstItem = false
           lastItem = false
-          
+
           const array = elTarget.querySelectorAll('.-is-active')
           array.forEach(el2 => {
             el2.classList.remove('-is-active')
           })
-          
+
           const array2 = elTarget.querySelectorAll('.-is-in-path')
           array2.forEach(el2 => {
             el2.classList.remove('-is-in-path')
@@ -2074,7 +2074,7 @@ function calendarInteraction2() {
 
         } else if (firstItem && lastItem) {
           const iterationCount = Math.abs(getIndex(firstItem) - getIndex(lastItem))
-    
+
           for (let l = 1; l < iterationCount; l++) {
             const item = elTarget.querySelector(`[data-index="${ getIndex(firstItem) + l }"]`)
             item.classList.add('-is-in-path')
@@ -2082,7 +2082,7 @@ function calendarInteraction2() {
 
           firstDate.innerHTML = `${firstItem.getAttribute('data-week')} ${firstItem.querySelector('.js-date').innerHTML} ${firstItem.getAttribute('data-month')}`
           lastDate.innerHTML = `${lastItem.getAttribute('data-week')} ${lastItem.querySelector('.js-date').innerHTML} ${lastItem.getAttribute('data-month')}`
-    
+
           completeState = true
         }
       })

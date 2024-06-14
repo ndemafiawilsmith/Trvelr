@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Gemini;
 
+use App\Models\country;
+use App\Models\countryDetails;
 use Gemini\Laravel\Facades\Gemini;
 use Livewire\Component;
 use Unsplash\HttpClient;
@@ -13,62 +15,34 @@ class Test extends Component
 {
     public function mount()
     {
+        $countries  = country::all();
+        foreach($countries as $country){
 
-//         $data = '
-//    {
+            $prompt = "
+            Please provide detailed information about $country->countryname in JSON format. The information should include the following fields:
 
-//         "name": "Cameroon",
+            1. Country Overview:
+            - description
+            - country_name
+            - capital_city
+            - official_language
+            - currency
+            - population (as a number)
+            - time_zone
 
-//         "capital_city": "Yaoundé",
-
-//         "official_languages": [
-
-//             "French",
-
-//             "English"
-
-//         ],
-
-//         "currency": "Central African CFA franc (XAF)",
-
-//         "population": 27.02 million (2023 est.),
-
-//         "time_zones": [
-
-//             "Central Africa Time (UTC+1)"
-
-//         ],
-
-//         "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Flag_of_Cameroon.svg/1280px-Flag_of_Cameroon.svg.png"
-
-//     } ';
-//         dd(json_decode($data, true));
-        $prompt = '
-        Please provide detailed information about Cameroon in JSON format. The information should include the following fields:
-
-                1. Country Overview:
-                - Description
-                - Name of the country
-                - Capital city
-                - Official language(s)
-                - Currency
-                - Population
-                - Time zone(s)
-                - Flag
-
-                Here\'s an example of the JSON format I expect Format the values(population), so it does not affect te json output:
-                \'\'\'
-                {
-                "name": "Country Name",
-                "capital_city": "Capital City",
-                "official_languages": ["Language1", "Language2"],
-                "currency": "Currency Name",
-                "population": "Population Number",
-                "time_zones": ["Time Zone1", "Time Zone2"],
-                "flag": "URL to the image of the flag"
-                }
-                \'\'\'
-        ';
+            Here's an example of the JSON format I expect, with the population formatted correctly:
+            '''json
+            {
+                \"name\": \"Country Name\",
+                \"capital_city\": \"Capital City\",
+                \"official_languages\": [\"Language1\", \"Language2\"],
+                \"currency\": \"Currency Name\",
+                \"population\": 12345678,
+                \"time_zones\": [\"Time Zone1\", \"Time Zone2\"],
+                \"flag\": \"URL to the image of the flag\"
+            }
+            '''
+        ";
         $stream = Gemini::geminipro()->streamGenerateContent($prompt);
         $content = "";
         foreach ($stream as $response) {
@@ -84,7 +58,21 @@ class Test extends Component
         // // Remove everything after the last ']'
         $json = preg_replace('/\}[^\]]*$/', '}', $json);
 
-        dd(json_decode($json, true));
+        $data = json_decode($json, true);
+        dd($data);
+        countryDetails::create([
+            'country_id' => $country->id, // Assuming country_id 1 exists in your countries table
+            'description' => $data['description'],
+            'name' => $data['country_name'],
+            'capital_city' => $data['capital_city'],
+            'official_languages' => $data['official_language'],
+            'currency' => $data['currency'],
+            'population' => $data['population'],
+            'time_zones' => $data['time_zone']
+        ]);
+
+        }
+
     }
     public function render()
     {

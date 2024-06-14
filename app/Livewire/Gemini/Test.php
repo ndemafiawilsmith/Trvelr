@@ -25,7 +25,7 @@ class Test extends Component
             - description
             - country_name
             - capital_city
-            - official_language
+            - official_languages
             - currency
             - population (as a number)
             - time_zone
@@ -33,15 +33,18 @@ class Test extends Component
             Here's an example of the JSON format I expect, with the population formatted correctly:
             '''json
             {
-                \"name\": \"Country Name\",
+                \"description\": \"A brief description of the country\",
+                \"country_name\": \"Country Name\",
                 \"capital_city\": \"Capital City\",
                 \"official_languages\": [\"Language1\", \"Language2\"],
                 \"currency\": \"Currency Name\",
                 \"population\": 12345678,
-                \"time_zones\": [\"Time Zone1\", \"Time Zone2\"],
+                \"time_zone\": [\"Time Zone1\", \"Time Zone2\"],
                 \"flag\": \"URL to the image of the flag\"
             }
             '''
+
+            Make sure the response is pure json no extra strings or characters added.
         ";
         $stream = Gemini::geminipro()->streamGenerateContent($prompt);
         $content = "";
@@ -51,7 +54,7 @@ class Test extends Component
 
         $jon = $content;
 
-         // Clean Json
+        //  // Clean Json
         // Remove everything before the first '['
         $json = preg_replace('/^[^\[]*\{/', '{', $jon);
 
@@ -59,16 +62,16 @@ class Test extends Component
         $json = preg_replace('/\}[^\]]*$/', '}', $json);
 
         $data = json_decode($json, true);
-        dd($data);
+        // dd($data);
         countryDetails::create([
             'country_id' => $country->id, // Assuming country_id 1 exists in your countries table
             'description' => $data['description'],
             'name' => $data['country_name'],
             'capital_city' => $data['capital_city'],
-            'official_languages' => $data['official_language'],
+            'official_languages' => json_encode($data['official_languages']),
             'currency' => $data['currency'],
             'population' => $data['population'],
-            'time_zones' => $data['time_zone']
+            'time_zones' => json_encode($data['time_zone'])
         ]);
 
         }

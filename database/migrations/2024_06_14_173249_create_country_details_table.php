@@ -17,10 +17,10 @@ return new class extends Migration
             $table->text('description');
             $table->string('name');
             $table->string('capital_city');
-            $table->string('official_languages');
+            $table->json('official_languages');
             $table->string('currency');
             $table->bigInteger('population');
-            $table->string('time_zones');
+            $table->json('time_zones');
             $table->timestamps();
         });
     }

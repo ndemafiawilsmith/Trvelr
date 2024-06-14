@@ -15,7 +15,7 @@ class Test extends Component
 {
     public function mount()
     {
-        $countries  = country::where('id', '>=', 12)->get();
+        $countries  = country::where('id', '>=', 56)->get();
         // dd($countries);
         foreach($countries as $country){
 
@@ -63,7 +63,7 @@ class Test extends Component
         $json = preg_replace('/\}[^\]]*$/', '}', $json);
 
         $data = json_decode($json, true);
-        // dd($data);
+        // dd($json, $data);
         countryDetails::create([
             'country_id' => $country->id, // Assuming country_id 1 exists in your countries table
             'description' => $data['description'],

@@ -15,7 +15,8 @@ class Test extends Component
 {
     public function mount()
     {
-        $countries  = country::all();
+        $countries  = country::where('id', '>=', 4)->get();
+        // dd($countries);
         foreach($countries as $country){
 
             $prompt = "

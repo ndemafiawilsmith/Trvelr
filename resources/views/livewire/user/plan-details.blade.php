@@ -206,7 +206,7 @@
                     <img src="{{ $fifth }}" alt="image" class="rounded-4">
 
                     <div class="absolute px-10 py-10 col-12 h-full d-flex justify-end items-end">
-                <a href="javascript:void(0);" class="button -blue-1 px-24 py-15 bg-white text-dark-1 js-gallery" data-gallery="gallery2">
+                <a href="javascript:void(0);" class="button -blue-1 px-24 py-15 bg-white text-dark-1 js-gallery">
                   Credits Pixabay
                 </a>
                 <a href="img/gallery/1/2.png" class="js-gallery" data-gallery="gallery2"></a>

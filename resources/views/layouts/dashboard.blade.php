@@ -124,7 +124,7 @@
 
                 <div class="sidebar__item">
                     <div class="sidebar__button  @if (Route::currentRouteName() == 'savings') -is-active @endif">
-                        <a href="db-booking.html" class="d-flex items-center text-15 lh-1 fw-500">
+                        <a href="{{ route('savings') }}" class="d-flex items-center text-15 lh-1 fw-500">
                             <img src="{{ asset('img/dashboard/icons/2.svg') }}" width="30px" alt="image"
                                 class="mr-15">
                             Savings

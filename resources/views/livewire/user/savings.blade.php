@@ -56,10 +56,10 @@
                                         <td>{{ $saving->itinerary->title }}</td>
                                         <td class="lh-16">{{ $saving->goal_deadline->format('D d M') }}</td>
                                         <td class="fw-500">${{ number_format($saving->goal_amount, 0, '.', ',') }}</td>
-                                        <td>$0</td>
-                                        <td>$0</td>
+                                        <td>${{ number_format($saving->saved_amount) }}</td>
+                                        <td>${{ number_format($saving->goal_amount - $saving->saved_amount) }}</td>
                                         <td>
-                                            <a href="">
+                                            <a href="{{ route('save', ['id'=>$saving->id]) }}">
                                                 <span class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-blue-1-05 text-blue-1">Save</span>
                                             </a>
                                         </td>

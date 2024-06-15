@@ -56,195 +56,152 @@
 
                         <div class="row y-gap-20 x-gap-20">
                             <div class="col-auto">
-                                <button class="button -dark-1 @if($method == 'credit') bg-blue-1 text-white @else -blue-1 bg-light-2 @endif  px-20 py-15"
+                                <button
+                                    class="button -dark-1 @if ($method == 'credit') bg-blue-1 text-white @else -blue-1 bg-light-2 @endif  px-20 py-15"
                                     wire:click='changeMethod("credit")'>Credit/Debit
                                     Card</button>
                             </div>
 
                             <div class="col-auto">
-                                <button class="button -@if($method == 'digital') bg-blue-1 text-white @else -blue-1 bg-light-2 @endif px-20 py-15"
+                                <button
+                                    class="button -@if ($method == 'digital') bg-blue-1 text-white @else -blue-1 bg-light-2 @endif px-20 py-15"
                                     wire:click='changeMethod("digital")'>Crypto Payment</button>
                             </div>
 
 
                             <div class="col-auto">
-                                <button class="button @if($method == 'bank') bg-blue-1 text-white @else -blue-1 bg-light-2 @endif px-20 py-15"
+                                <button
+                                    class="button @if ($method == 'bank') bg-blue-1 text-white @else -blue-1 bg-light-2 @endif px-20 py-15"
                                     wire:click='changeMethod("bank")'>Bank Transfer</button>
                             </div>
                         </div>
 
-                        @if ($method == 'credit')
+                        <form wire:submit.prevent="save">
                             <div class="row x-gap-20 y-gap-20 pt-20">
                                 <div class="col-12">
 
                                     <div class="form-input ">
-                                        <input type="text" required>
-                                        <label class="lh-1 text-16 text-light-1">Select payment method *</label>
+                                        <input type="text" wire:model='amount'>
+                                        <label class="lh-1 text-16 text-light-1">Amount *</label>
                                     </div>
+                                    @error('amount')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
 
                                 </div>
+                            </div>
+                            @if ($method == 'credit')
+                                <div class="row x-gap-20 y-gap-20 pt-20">
+                                    <div class="col-12">
 
-                                <div class="col-md-6">
+                                        <div class="form-input ">
+                                            <input type="text" required>
+                                            <label class="lh-1 text-16 text-light-1">Full Name *</label>
+                                        </div>
 
-                                    <div class="form-input ">
-                                        <input type="text" required>
-                                        <label class="lh-1 text-16 text-light-1">Card holder name *</label>
                                     </div>
 
+                                    <div class="col-md-6">
 
-                                    <div class="form-input mt-20">
-                                        <input type="text" required>
-                                        <label class="lh-1 text-16 text-light-1">Credit/debit card number *</label>
+                                        <div class="form-input ">
+                                            <input type="text" required>
+                                            <label class="lh-1 text-16 text-light-1">Email *</label>
+                                        </div>
+
+
+                                        <div class="form-input mt-20">
+                                            <input type="text" required>
+                                            <label class="lh-1 text-16 text-light-1">Contact *</label>
+                                        </div>
                                     </div>
+                                </div>
+                                <div class="row y-gap-20 items-center justify-between">
 
+                                    <div class="col-auto mt-15">
 
-                                    <div class="row x-gap-20 y-gap-20 pt-20">
-                                        <div class="col-md-6">
+                                        <button type="submit" class="button h-60 px-24 -dark-1 bg-blue-1 text-white">
+                                            I have Paid <div class="icon-arrow-top-right ml-15"></div>
+                                        </button>
 
-                                            <div class="form-input ">
-                                                <input type="text" required>
-                                                <label class="lh-1 text-16 text-light-1">Expiry date *</label>
+                                    </div>
+                                </div>
+                            @elseif ($method == 'bank')
+                                <div class="border-light rounded-8 px-50 py-40 mt-40">
+                                    <h4 class="text-20 fw-500 mb-30">Bank Details</h4>
+
+                                    <div class="row y-gap-10">
+
+                                        <div class="col-12">
+                                            <div class="d-flex justify-between ">
+                                                <div class="text-15 lh-16">Account Name</div>
+                                                <div class="text-15 lh-16 fw-500 text-blue-1">Trvelr AI Planner</div>
                                             </div>
-
                                         </div>
 
-                                        <div class="col-md-6">
-
-                                            <div class="form-input ">
-                                                <input type="text" required>
-                                                <label class="lh-1 text-16 text-light-1">CVC/CVV *</label>
+                                        <div class="col-12">
+                                            <div class="d-flex justify-between border-top-light pt-10">
+                                                <div class="text-15 lh-16">Account Number</div>
+                                                <div class="text-15 lh-16 fw-500 text-blue-1">0150299261</div>
                                             </div>
-
                                         </div>
+
+                                        <div class="col-12">
+                                            <div class="d-flex justify-between border-top-light pt-10">
+                                                <div class="text-15 lh-16">Bank Name</div>
+                                                <div class="text-15 lh-16 fw-500 text-blue-1">Union Bank</div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <img src="{{ asset('img/booking-pages/card.png') }}" alt="image" class="h-full">
+                                <div class="row y-gap-20 items-center justify-between">
+
+                                    <div class="col-auto mt-15">
+
+                                        <button type="submit" class="button h-60 px-24 -dark-1 bg-blue-1 text-white">
+                                            I have Paid <div class="icon-arrow-top-right ml-15"></div>
+                                        </button>
+
+                                    </div>
                                 </div>
-                            </div>
-                        @elseif ($method == 'bank')
-                            <div class="border-light rounded-8 px-50 py-40 mt-40">
-                                <h4 class="text-20 fw-500 mb-30">Your Information</h4>
+                            @elseif($method == 'digital')
+                                <div class="border-light rounded-8 px-50 py-40 mt-40">
+                                    <h4 class="text-20 fw-500 mb-30">Crypto Details</h4>
 
-                                <div class="row y-gap-10">
+                                    <div class="row y-gap-10">
 
-                                    <div class="col-12">
-                                        <div class="d-flex justify-between ">
-                                            <div class="text-15 lh-16">First name</div>
-                                            <div class="text-15 lh-16 fw-500 text-blue-1">System</div>
+                                        <div class="col-12">
+                                            <div class="d-flex justify-between ">
+                                                <div class="text-15 lh-16">Btc Address</div>
+                                                <div class="text-15 lh-16 fw-500 text-blue-1">
+                                                    1BisQyzMPMh4HaaU5YJ6xuiPHY8bPjL6Jt</div>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-12">
-                                        <div class="d-flex justify-between border-top-light pt-10">
-                                            <div class="text-15 lh-16">Last name</div>
-                                            <div class="text-15 lh-16 fw-500 text-blue-1">Admin</div>
+                                        <div class="col-12">
+                                            <div class="d-flex justify-between border-top-light pt-10">
+                                                <div class="text-15 lh-16">Ethereum Address</div>
+                                                <div class="text-15 lh-16 fw-500 text-blue-1">
+                                                    3BisQyzMPMh4HahUJ*7BjDiPHY8bPjB9U&BDFS8</div>
+                                            </div>
                                         </div>
+
                                     </div>
-
-                                    <div class="col-12">
-                                        <div class="d-flex justify-between border-top-light pt-10">
-                                            <div class="text-15 lh-16">Email</div>
-                                            <div class="text-15 lh-16 fw-500 text-blue-1">admin@bookingcore.test</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="d-flex justify-between border-top-light pt-10">
-                                            <div class="text-15 lh-16">Phone</div>
-                                            <div class="text-15 lh-16 fw-500 text-blue-1">112 666 888</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="d-flex justify-between border-top-light pt-10">
-                                            <div class="text-15 lh-16">Address line 1</div>
-                                            <div class="text-15 lh-16 fw-500 text-blue-1"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="d-flex justify-between border-top-light pt-10">
-                                            <div class="text-15 lh-16">Address line 2</div>
-                                            <div class="text-15 lh-16 fw-500 text-blue-1"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="d-flex justify-between border-top-light pt-10">
-                                            <div class="text-15 lh-16">City</div>
-                                            <div class="text-15 lh-16 fw-500 text-blue-1">New York</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="d-flex justify-between border-top-light pt-10">
-                                            <div class="text-15 lh-16">State/Province/Region</div>
-                                            <div class="text-15 lh-16 fw-500 text-blue-1"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="d-flex justify-between border-top-light pt-10">
-                                            <div class="text-15 lh-16">ZIP code/Postal code</div>
-                                            <div class="text-15 lh-16 fw-500 text-blue-1"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="d-flex justify-between border-top-light pt-10">
-                                            <div class="text-15 lh-16">Country</div>
-                                            <div class="text-15 lh-16 fw-500 text-blue-1">United States</div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="d-flex justify-between border-top-light pt-10">
-                                            <div class="text-15 lh-16">Special Requirements</div>
-                                            <div class="text-15 lh-16 fw-500 text-blue-1"></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="row y-gap-20 items-center justify-between">
-
-                                <div class="col-auto mt-15">
-
-                                    <a href="#" class="button h-60 px-24 -dark-1 bg-blue-1 text-white">
-                                        Paid <div class="icon-arrow-top-right ml-15"></div>
-                                    </a>
-
-                                </div>
-                            </div>
-                        @elseif($method == 'digital')
-                        <div class="row x-gap-20 y-gap-20 pt-20">
-                            <div class="col-12">
-
-                                <div class="form-input ">
-                                    <input type="text" value="sdsdsdfsdf" readonly>
-                                    <label class="lh-1 text-16 text-light-1">Select payment method *</label>
                                 </div>
 
-                            </div>
+                                <div class="row y-gap-20 items-center justify-between">
 
-                            <div class="col-md-6">
+                                    <div class="col-auto mt-15">
 
-                                <div class="form-input ">
-                                    <input type="text" readonly>
-                                    <label class="lh-1 text-16 text-light-1">Card holder name *</label>
+                                        <button type="submit"class="button h-60 px-24 -dark-1 bg-blue-1 text-white">
+                                            I have Paid <div class="icon-arrow-top-right ml-15"></div>
+                                        </button>
+
+                                    </div>
                                 </div>
-
-
-                                <div class="form-input mt-20">
-                                    <input type="text" readonly>
-                                    <label class="lh-1 text-16 text-light-1">Credit/debit card number *</label>
-                                </div>
-                            </div>
-                        </div>
-                        @endif
+                            @endif
+                        </form>
                     </div>
 
                     <div class="w-full h-1 bg-border mt-40 mb-40"></div>
@@ -290,15 +247,16 @@
                 <div class="col-xl-5 col-lg-4">
                     <div class="ml-80 lg:ml-40 md:ml-0">
                         <div class="px-30 py-30 border-light rounded-4">
-                            <div class="text-20 fw-500 mb-30">Your booking details</div>
+                            <div class="text-20 fw-500 mb-30">Your Travel details</div>
 
                             <div class="row x-gap-15 y-gap-20">
 
                                 <div class="col">
 
-                                    <div class="lh-17 fw-500">{{ $itinerary->title }}
+                                    <div class="lh-17 fw-500">{{ $savings->itinerary->title }}
                                     </div>
-                                    <div class="text-14 lh-15 mt-5">{{ $itinerary->country->countryname }}</div>
+                                    <div class="text-14 lh-15 mt-5">{{ $savings->itinerary->country->countryname }}
+                                    </div>
                                 </div>
                             </div>
 
@@ -306,10 +264,10 @@
 
 
                             @php
-                                $start_date = Carbon::parse($itinerary->start_date);
+                                $start_date = Carbon::parse($savings->itinerary->start_date);
                                 $start_date = $start_date->format('D d M');
 
-                                $end_date = Carbon::parse($itinerary->end_date);
+                                $end_date = Carbon::parse($savings->itinerary->end_date);
                                 $end_date = $end_date->format('D d M');
                             @endphp
                             <div class="row y-gap-20 justify-between">
@@ -337,7 +295,7 @@
                                     <div class="text-15">Total Budget</div>
                                 </div>
                                 <div class="col-auto">
-                                    <div class="text-15">${{ number_format($itinerary->budget) }}</div>
+                                    <div class="text-15">${{ number_format($savings->itinerary->budget) }}</div>
                                 </div>
                             </div>
 
@@ -346,7 +304,7 @@
                                     <div class="text-15">Saved</div>
                                 </div>
                                 <div class="col-auto">
-                                    <div class="text-15">US$674.47</div>
+                                    <div class="text-15">${{ number_format($savings->saved_amount) }}</div>
                                 </div>
                             </div>
 
@@ -355,11 +313,12 @@
                                     <div class="text-15">Remaining</div>
                                 </div>
                                 <div class="col-auto">
-                                    <div class="text-15">FREE</div>
+                                    <div class="text-15">$
+                                        {{ number_format($savings->itinerary->budget - $savings->saved_amount) }}</div>
                                 </div>
                             </div>
 
-                            <div class="px-20 py-20 bg-blue-2 rounded-4 mt-20">
+                            {{-- <div class="px-20 py-20 bg-blue-2 rounded-4 mt-20">
                                 <div class="row y-gap-5 justify-between">
                                     <div class="col-auto">
                                         <div class="text-18 lh-13 fw-500">Price</div>
@@ -368,7 +327,7 @@
                                         <div class="text-18 lh-13 fw-500">US$4,046.81</div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="px-30 py-30 border-light rounded-4 mt-30">
@@ -376,11 +335,11 @@
 
                             <div class="row y-gap-5 justify-between">
                                 <div class="col-auto">
-                                    <div class="text-15">Before you stay you'll pay</div>
+                                    <div class="text-15">{{ $savings->payment_schedule }}</div>
                                 </div>
-                                <div class="col-auto">
+                                {{-- <div class="col-auto">
                                     <div class="text-15">US$4,047</div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

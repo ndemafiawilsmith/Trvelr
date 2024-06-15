@@ -28,10 +28,12 @@ class savings_goal extends Model
         return $this->belongsTo(itinerarie::class);
     }
 
-    public function addSavings($amount)
+    public function addSavings($amount, $id)
     {
-        $this->saved_amount += $amount;
-        $this->save();
+        // Getting Previos Record
+        $savings = savings_goal::findorfail($id)->get();
+        // Adding New record plus previous record and saving
+        $savings::update(['saved_amount', $amount + $savings->saved_amount]);
     }
 
 

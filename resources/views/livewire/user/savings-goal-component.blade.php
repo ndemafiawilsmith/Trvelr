@@ -355,7 +355,7 @@
                 <div class="col-xl-5 col-lg-4">
                     <div class="ml-80 lg:ml-40 md:ml-0">
                         <div class="px-30 py-30 border-light rounded-4">
-                            <div class="text-20 fw-500 mb-30">Your booking details</div>
+                            <div class="text-20 fw-500 mb-30">Your Travel details</div>
 
                             <div class="row x-gap-15 y-gap-20">
 

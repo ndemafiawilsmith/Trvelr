@@ -102,17 +102,17 @@
                                         <td>
                                             <div class="dropdown js-dropdown js-actions-1-active">
                                                 <div class="dropdown__button d-flex items-center rounded-4 text-blue-1 bg-blue-1-05 text-14 px-15 py-5"
-                                                    data-el-toggle=".js-actions-1-toggle"
+                                                    data-el-toggle=".js-actions-1-toggle-{{ $plan->id }}"
                                                     data-el-toggle-active=".js-actions-1-active">
                                                     <span class="js-dropdown-title">Actions</span>
                                                     <i class="icon icon-chevron-sm-down text-7 ml-10"></i>
                                                 </div>
 
                                                 <div
-                                                    class="toggle-element -dropdown-2 js-click-dropdown js-actions-1-toggle">
+                                                    class="toggle-element -dropdown-2 js-click-dropdown js-actions-1-toggle-{{ $plan->id }}">
                                                     <div class="text-14 fw-500 js-dropdown-list">
 
-                                                        <div><a href="#" class="d-block js-dropdown-link">Details</a>
+                                                        <div><a href="{{ route('plan.details', ['id'=>$plan->id]) }}" class="d-block">Details</a>
                                                         </div>
 
                                                         <div><a href="#" class="d-block js-dropdown-link">Save</a>

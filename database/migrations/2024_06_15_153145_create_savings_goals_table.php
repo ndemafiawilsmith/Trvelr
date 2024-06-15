@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('itinerary_id')->constrained('itineraries')->onDelete('cascade');
             $table->decimal('goal_amount', 10, 2);
             $table->decimal('saved_amount', 10, 2)->default(0);
+            $table->string('payment_schedule')->nullable();
             $table->timestamp('goal_deadline');
             $table->timestamps();
         });

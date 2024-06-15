@@ -9,7 +9,7 @@ use Livewire\Component;
 class Save extends Component
 {
     public $itineraryId;
-    public $method= 'bank';
+    public $method= 'credit';
 
     public function mount($id){
         $this->dispatch('clickk', el: 'dashboard');

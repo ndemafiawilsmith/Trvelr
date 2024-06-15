@@ -56,21 +56,24 @@
 
                         <div class="row y-gap-20 x-gap-20">
                             <div class="col-auto">
-                                <button class="button -dark-1 bg-blue-1 text-white px-20 py-15">Credit/Debit
+                                <button class="button -dark-1 @if($method == 'credit') bg-blue-1 text-white @else -blue-1 bg-light-2 @endif  px-20 py-15"
+                                    wire:click='changeMethod("credit")'>Credit/Debit
                                     Card</button>
                             </div>
 
                             <div class="col-auto">
-                                <button class="button -blue-1 bg-light-2 px-20 py-15">Digital Payment</button>
+                                <button class="button -@if($method == 'digital') bg-blue-1 text-white @else -blue-1 bg-light-2 @endif px-20 py-15"
+                                    wire:click='changeMethod("digital")'>Crypto Payment</button>
                             </div>
 
 
                             <div class="col-auto">
-                                <button class="button -blue-1 bg-light-2 px-20 py-15">Bank Transfer</button>
+                                <button class="button @if($method == 'bank') bg-blue-1 text-white @else -blue-1 bg-light-2 @endif px-20 py-15"
+                                    wire:click='changeMethod("bank")'>Bank Transfer</button>
                             </div>
                         </div>
 
-                        @if ($method == 'card')
+                        @if ($method == 'credit')
                             <div class="row x-gap-20 y-gap-20 pt-20">
                                 <div class="col-12">
 
@@ -121,70 +124,130 @@
                                 </div>
                             </div>
                         @elseif ($method == 'bank')
+                            <div class="border-light rounded-8 px-50 py-40 mt-40">
+                                <h4 class="text-20 fw-500 mb-30">Your Information</h4>
 
+                                <div class="row y-gap-10">
+
+                                    <div class="col-12">
+                                        <div class="d-flex justify-between ">
+                                            <div class="text-15 lh-16">First name</div>
+                                            <div class="text-15 lh-16 fw-500 text-blue-1">System</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="d-flex justify-between border-top-light pt-10">
+                                            <div class="text-15 lh-16">Last name</div>
+                                            <div class="text-15 lh-16 fw-500 text-blue-1">Admin</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="d-flex justify-between border-top-light pt-10">
+                                            <div class="text-15 lh-16">Email</div>
+                                            <div class="text-15 lh-16 fw-500 text-blue-1">admin@bookingcore.test</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="d-flex justify-between border-top-light pt-10">
+                                            <div class="text-15 lh-16">Phone</div>
+                                            <div class="text-15 lh-16 fw-500 text-blue-1">112 666 888</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="d-flex justify-between border-top-light pt-10">
+                                            <div class="text-15 lh-16">Address line 1</div>
+                                            <div class="text-15 lh-16 fw-500 text-blue-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="d-flex justify-between border-top-light pt-10">
+                                            <div class="text-15 lh-16">Address line 2</div>
+                                            <div class="text-15 lh-16 fw-500 text-blue-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="d-flex justify-between border-top-light pt-10">
+                                            <div class="text-15 lh-16">City</div>
+                                            <div class="text-15 lh-16 fw-500 text-blue-1">New York</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="d-flex justify-between border-top-light pt-10">
+                                            <div class="text-15 lh-16">State/Province/Region</div>
+                                            <div class="text-15 lh-16 fw-500 text-blue-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="d-flex justify-between border-top-light pt-10">
+                                            <div class="text-15 lh-16">ZIP code/Postal code</div>
+                                            <div class="text-15 lh-16 fw-500 text-blue-1"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="d-flex justify-between border-top-light pt-10">
+                                            <div class="text-15 lh-16">Country</div>
+                                            <div class="text-15 lh-16 fw-500 text-blue-1">United States</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="d-flex justify-between border-top-light pt-10">
+                                            <div class="text-15 lh-16">Special Requirements</div>
+                                            <div class="text-15 lh-16 fw-500 text-blue-1"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row y-gap-20 items-center justify-between">
+
+                                <div class="col-auto mt-15">
+
+                                    <a href="#" class="button h-60 px-24 -dark-1 bg-blue-1 text-white">
+                                        Paid <div class="icon-arrow-top-right ml-15"></div>
+                                    </a>
+
+                                </div>
+                            </div>
                         @elseif($method == 'digital')
+                        <div class="row x-gap-20 y-gap-20 pt-20">
+                            <div class="col-12">
 
+                                <div class="form-input ">
+                                    <input type="text" value="sdsdsdfsdf" readonly>
+                                    <label class="lh-1 text-16 text-light-1">Select payment method *</label>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div class="form-input ">
+                                    <input type="text" readonly>
+                                    <label class="lh-1 text-16 text-light-1">Card holder name *</label>
+                                </div>
+
+
+                                <div class="form-input mt-20">
+                                    <input type="text" readonly>
+                                    <label class="lh-1 text-16 text-light-1">Credit/debit card number *</label>
+                                </div>
+                            </div>
+                        </div>
                         @endif
                     </div>
 
-                    <div class="mt-60 md:mt-32">
-                        <div class="row y-gap-20 x-gap-20">
-                            <div class="col-auto">
-                                <button class="button -dark-1 bg-blue-1 text-white px-20 py-15">Credit/Debit
-                                    Card</button>
-                            </div>
-
-                            <div class="col-auto">
-                                <button class="button -blue-1 bg-light-2 px-20 py-15">Digtal Payment</button>
-                            </div>
-                        </div>
-
-                        <div class="mt-20">
-
-                            <div class="form-input ">
-                                <input type="text" required>
-                                <label class="lh-1 text-16 text-light-1">Select payment method *</label>
-                            </div>
-
-                        </div>
-
-                        <div class="mt-20">
-                            <ul class="list-disc y-gap-4 text-15 text-light-1">
-                                <li>You have chosen to pay by PayPal. You will be forwarded to the PayPal website to
-                                    proceed with this transaction.</li>
-                                <li>The total amount you will be charged is: $2,338.01</li>
-                            </ul>
-                        </div>
-                    </div>
-
                     <div class="w-full h-1 bg-border mt-40 mb-40"></div>
-
-                    <div class="row y-gap-20 items-center justify-between">
-                        <div class="col-auto">
-
-                            <div class="d-flex items-center">
-                                <div class="form-checkbox ">
-                                    <input type="checkbox" name="name">
-                                    <div class="form-checkbox__mark">
-                                        <div class="form-checkbox__icon icon-check"></div>
-                                    </div>
-                                </div>
-
-                                <div class="text-14 lh-10 text-light-1 ml-10">Get access to members-only deals, just
-                                    like the millions of other email subscribers</div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-auto">
-
-                            <a href="#" class="button h-60 px-24 -dark-1 bg-blue-1 text-white">
-                                Book Now <div class="icon-arrow-top-right ml-15"></div>
-                            </a>
-
-                        </div>
-                    </div>
 
                     <div class="d-flex flex-column items-center mt-60 lg:md-40 sm:mt-24">
                         <div class="size-80 flex-center rounded-full bg-dark-3">

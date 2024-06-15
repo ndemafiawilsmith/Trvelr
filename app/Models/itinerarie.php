@@ -39,4 +39,9 @@ class itinerarie extends Model
     {
         return $this->belongsTo(country::class, 'destination');
     }
+
+    public function savingsGoal()
+    {
+        return $this->hasOne(savings_goal::class, 'itinerary_id', 'id');
+    }
 }

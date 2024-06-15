@@ -37,6 +37,7 @@ class PlanDetails extends Component
 
             // test it out
             $results = $pixabayClient->get(['q' => $desc . ', Africa'], true);
+            // dd($results);
 
             foreach ($results['hits'] as $images) {
                 countryImages::create(

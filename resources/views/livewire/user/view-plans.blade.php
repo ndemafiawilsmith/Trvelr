@@ -115,7 +115,7 @@
                                                         <div><a href="{{ route('plan.details', ['id'=>$plan->id]) }}" class="d-block">Details</a>
                                                         </div>
 
-                                                        <div><a href="#" class="d-block js-dropdown-link">Save</a>
+                                                        <div><a href="#" class="d-block js-dropdown-link">Create Goal</a>
                                                         </div>
 
                                                         <div><a href="#" class="d-block js-dropdown-link">Cancel</a>

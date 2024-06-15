@@ -456,7 +456,7 @@
 
 
             <div class="d-flex items-center ml-20 is-menu-opened-hide md:d-none">
-              <a href="{{ route('signup') }}" class="button px-30 fw-400 text-14 -blue-1 bg-white h-50 text-dark-1">Become An Expert</a>
+              <a href="{{ route('signup') }}" class="button px-30 fw-400 text-14 -blue-1 bg-white h-50 text-dark-1">Become A Tour Expert</a>
               <a href="{{ route('login') }}" class="button px-30 fw-400 text-14 border-white -blue-1 h-50 text-white ml-20">Sign In / Register</a>
             </div>
           </div>

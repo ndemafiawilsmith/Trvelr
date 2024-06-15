@@ -191,19 +191,16 @@
         </div>
     </div>
 
-
-    @if (Route::currentRouteName() == 'plan.details')
+    @php
+        $isPlanDetails = Route::currentRouteName() == 'plan.details';
+        $isSavingsCreate = Route::currentRouteName() == 'savings.create';
+    @endphp
+    @if ($isPlanDetails || $isSavingsCreate)
         <script>
             window.addEventListener('clickk', event => {
                 const target = document.querySelector(`[data-x=dashboard]`);
                 const toggleClass = target.getAttribute('data-x-toggle');
                 target.classList.toggle(toggleClass);
-                // toastr.options =
-                //         {
-                //             "closeButton" : true,
-                //             "progressBar" : true
-                //         }
-                // toastr.error(event.detail.errfeedback);
             });
         </script>
     @endif

@@ -36,8 +36,8 @@
 
 
     @php
-    $activites = json_decode($itinerary->activities, true);
-    // dd($activites);
+        $activites = json_decode($itinerary->activities, true);
+        // dd($activites);
     @endphp
     <div class="singleMenu js-singleMenu">
         <div class="singleMenu__content">
@@ -67,7 +67,7 @@
                         <div class="row x-gap-15 y-gap-15 items-center">
                             <div class="col-auto">
                                 @php
-                                $total_budget = 0;
+                                    $total_budget = 0;
                                     foreach ($activites as $activity) {
                                         foreach ($activity['activities'] as $daily) {
                                             $bud = str_replace('$', '', $daily['budget']);
@@ -206,14 +206,15 @@
                     <img src="{{ $fifth }}" alt="image" class="rounded-4">
 
                     <div class="absolute px-10 py-10 col-12 h-full d-flex justify-end items-end">
-                <a href="javascript:void(0);" class="button -blue-1 px-24 py-15 bg-white text-dark-1 js-gallery">
-                  Credits Pixabay
-                </a>
-                <a href="img/gallery/1/2.png" class="js-gallery" data-gallery="gallery2"></a>
-                <a href="img/gallery/1/3.png" class="js-gallery" data-gallery="gallery2"></a>
-                <a href="img/gallery/1/4.png" class="js-gallery" data-gallery="gallery2"></a>
-                <a href="img/gallery/1/5.png" class="js-gallery" data-gallery="gallery2"></a>
-              </div>
+                        <a href="javascript:void(0);"
+                            class="button -blue-1 px-24 py-15 bg-white text-dark-1 js-gallery">
+                            Credits Pixabay
+                        </a>
+                        <a href="img/gallery/1/2.png" class="js-gallery" data-gallery="gallery2"></a>
+                        <a href="img/gallery/1/3.png" class="js-gallery" data-gallery="gallery2"></a>
+                        <a href="img/gallery/1/4.png" class="js-gallery" data-gallery="gallery2"></a>
+                        <a href="img/gallery/1/5.png" class="js-gallery" data-gallery="gallery2"></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -272,19 +273,19 @@
                                         @endphp
                                         <div class="text-15">
                                             @php
-                                                $lang =  (count($languages) > 1) ?   "Languages"  : "Language";
+                                                $lang = count($languages) > 1 ? 'Languages' : 'Language';
                                             @endphp
                                             @if (is_array($languages))
-                                                {{$lang . ": ". implode(', ', $languages) }}
+                                                {{ $lang . ': ' . implode(', ', $languages) }}
                                             @endif
-                                    </div>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-5">
                                     <div class="d-flex x-gap-15 y-gap-15 items-center">
                                         <i class="fas fa-city"></i>
-                                        <div class="text-15">{{ "Capital: " .$countryDetails->capital_city }}</div>
+                                        <div class="text-15">{{ 'Capital: ' . $countryDetails->capital_city }}</div>
                                     </div>
                                 </div>
 
@@ -296,7 +297,8 @@
                                 </div>
                                 @php
                                     // Function to format the population number
-                                    function formatPopulation($population) {
+                                    function formatPopulation($population)
+                                    {
                                         if ($population >= 1000000) {
                                             // Format in millions
                                             return number_format($population / 1000000, 2) . ' million';
@@ -312,7 +314,8 @@
                                 <div class="col-md-5">
                                     <div class="d-flex x-gap-15 y-gap-15 items-center">
                                         <i class="fas fa-users"></i>
-                                        <div class="text-15">Population {{ formatPopulation($countryDetails->population) }}</div>
+                                        <div class="text-15">Population
+                                            {{ formatPopulation($countryDetails->population) }}</div>
                                     </div>
                                 </div>
 
@@ -324,18 +327,20 @@
                                         @endphp
                                         <div class="text-15">Time Zone:
                                             @if (is_array($timezone))
-                                                {{implode(', ', $timezone) }}
+                                                {{ implode(', ', $timezone) }}
                                             @endif
                                         </div>
                                     </div>
                                 </div>
 
-                                {{-- <div class="col-md-5">
+                                <div class="col-md-5">
                                     <div class="d-flex x-gap-15 y-gap-15 items-center">
-                                        <i class="icon-shield"></i>
-                                        <div class="text-15">Safety &amp; security</div>
+                                        <i class="fas fa-flag"></i>
+                                        <div class="text-15">Flag <img
+                                                src="{{ asset('mysql-country-with-flag/flags/' . strtolower($itinerary->country->code) . '.png') }}"
+                                                alt=""></div>
                                     </div>
-                                </div> --}}
+                                </div>
 
                             </div>
                         </div>
@@ -343,7 +348,7 @@
                         <div id="overview" class="col-12">
                             <h3 class="text-22 fw-500 pt-40 border-top-light">Overview</h3>
                             <p class="text-dark-1 text-15 mt-20">
-                                {{$countryDetails->description}}
+                                {{ $countryDetails->description }}
                             </p>
                             {{-- <a href="#" class="d-block text-14 text-blue-1 fw-500 underline mt-10">Show More</a> --}}
                         </div>
@@ -402,8 +407,6 @@
                                                 @php
                                                     $start_date = Carbon::parse($itinerary->start_date);
                                                     $start_date = $start_date->format('D d M');
-
-
 
                                                     $end_date = Carbon::parse($itinerary->end_date);
                                                     $end_date = $end_date->format('D d M');
@@ -548,6 +551,7 @@
                                 </button>
                             </div>
 
+                            {{--
                             <div class="row y-gap-10">
                                 <div class="col-12">
                                     <div class="d-flex items-center">
@@ -578,8 +582,9 @@
                                 <div class="text-14">Harrogate Turkish Baths</div>
                                 <div class="text-14 text-light-1">0.1 km</div>
                             </div>
-
                             <a href="#" class="d-block text-14 fw-500 underline text-blue-1 mt-10">Show More</a>
+                            --}}
+
                         </div>
                     </div>
                 </div>
@@ -613,7 +618,8 @@
                                 <div class="roomGrid__grid">
                                     <div>
                                         <div class="ratio ratio-1:1">
-                                            <img src="{{ asset('img/backgrounds/1.png') }}" alt="image" class="img-ratio rounded-4">
+                                            <img src="{{ asset('img/backgrounds/1.png') }}" alt="image"
+                                                class="img-ratio rounded-4">
                                         </div>
 
                                         {{-- <div class="y-gap-5 mt-20">
@@ -655,8 +661,10 @@
                                                     @foreach ($activity['activities'] as $daily)
                                                         <div class="d-flex items-center text-green-2">
                                                             <i class="icon-check text-12 mr-10"></i>
-                                                            <div class="text-15">{{ $daily['time'] }}: {{ $daily['activity'] }}</div>
-                                                            <span style="color:black; text-style:bold;">{{ $daily['budget'] }}</span>
+                                                            <div class="text-15">{{ $daily['time'] }}:
+                                                                {{ $daily['activity'] }}</div>
+                                                            <span
+                                                                style="color:black; text-style:bold;">{{ $daily['budget'] }}</span>
                                                         </div>
                                                         <hr>
                                                     @endforeach
@@ -674,40 +682,45 @@
 
                                             <div>
                                                 @php
-                                                $budget = 0;
-                                                    foreach ($activity['activities'] as $daily){
+                                                    $budget = 0;
+                                                    foreach ($activity['activities'] as $daily) {
                                                         $bud = str_replace('$', '', $daily['budget']);
                                                         $budget += $bud;
                                                     }
                                                 @endphp
                                                 <div class="text-18 lh-15 fw-500">US${{ $budget }}</div>
-                                                <div class="text-14 lh-18 text-light-1">Includes taxes and charges</div>
+                                                <div class="text-14 lh-18 text-light-1">Includes taxes and charges
+                                                </div>
                                             </div>
 
                                             <div>
 
                                                 <div class="dropdown js-dropdown js-price-1-active">
                                                     <div class="dropdown__button d-flex items-center rounded-4 border-light px-15 h-50 text-14"
-                                                        data-el-toggle=".js-price-1-toggle"
+                                                        data-el-toggle=".js-price-1-toggle-{{ $activity->id }}"
                                                         data-el-toggle-active=".js-price-1-active">
                                                         <span class="js-dropdown-title">1 (US$ 3,120)</span>
                                                         <i class="icon icon-chevron-sm-down text-7 ml-10"></i>
                                                     </div>
 
                                                     <div
-                                                        class="toggle-element -dropdown  js-click-dropdown js-price-1-toggle">
+                                                        class="toggle-element -dropdown  js-click-dropdown js-price-1-toggle-{{ $activity->id }}">
                                                         <div class="text-14 y-gap-15 js-dropdown-list">
 
-                                                            <div><a href="#" class="d-block js-dropdown-link">2 (US$
+                                                            <div><a href="#" class="d-block js-dropdown-link">2
+                                                                    (US$
                                                                     3,120)</a></div>
 
-                                                            <div><a href="#" class="d-block js-dropdown-link">3 (US$
+                                                            <div><a href="#" class="d-block js-dropdown-link">3
+                                                                    (US$
                                                                     3,120)</a></div>
 
-                                                            <div><a href="#" class="d-block js-dropdown-link">4 (US$
+                                                            <div><a href="#" class="d-block js-dropdown-link">4
+                                                                    (US$
                                                                     3,120)</a></div>
 
-                                                            <div><a href="#" class="d-block js-dropdown-link">5 (US$
+                                                            <div><a href="#" class="d-block js-dropdown-link">5
+                                                                    (US$
                                                                     3,120)</a></div>
 
                                                         </div>
@@ -724,7 +737,8 @@
                                         <div class="text-22 fw-500 lh-17 mt-5">US$72</div>
 
 
-                                        <a href="#" class="button h-50 px-24 -dark-1 bg-blue-1 text-white mt-10">
+                                        <a href="#"
+                                            class="button h-50 px-24 -dark-1 bg-blue-1 text-white mt-10">
                                             Reserve <div class="icon-arrow-top-right ml-15"></div>
                                         </a>
 

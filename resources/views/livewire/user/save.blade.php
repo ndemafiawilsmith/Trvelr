@@ -21,7 +21,9 @@
 
                 <div class="col-auto">
                     <div class="d-flex items-center">
-                        <div class="size-40 rounded-full flex-center bg-blue-1-05 text-blue-1 fw-500">2</div>
+                        <div class="size-40 rounded-full flex-center bg-blue-1">
+                            <i class="icon-check text-16 text-white"></i>
+                        </div>
                         <div class="text-18 fw-500 ml-10">Save</div>
                     </div>
                 </div>
@@ -45,67 +47,11 @@
             <div class="row">
                 <div class="col-xl-7 col-lg-8">
                     <div class="py-15 px-20 rounded-4 text-15 bg-blue-1-05">
-                        You can now set your savings goal in your local currency, and we will automatically convert it into US Dollars
+                        You can now save in your local currency, and we will automatically convert it
+                        into US Dollars
                     </div>
 
-                    <h2 class="text-22 fw-500 mt-40 md:mt-24">Set a saving Goal</h2>
-
-                    <form wire:submit.prevent='addGoal'>
-                        <div class="row x-gap-20 y-gap-20 pt-20">
-                            <div class="col-12">
-
-                                <div class="form-input ">
-                                    <input type="text" required wire:model='goal_amount'>
-                                    <label class="lh-1 text-16 text-light-1">Goal Amount</label>
-                                </div>
-
-                            </div>
-                            <div class="col-md-6">
-
-                                <div class="form-input ">
-                                    <input type="date" required wire:model='goal_deadline'>
-                                    <label class="lh-1 text-16 text-light-1">Goal Deadline</label>
-                                </div>
-
-                            </div>
-                            <div class="col-md-6">
-
-                                <div class="form-input">
-                                    <label class="lh-1 text-16 text-light-1">Payment Schedule</label>
-                                    <select name="payment_schedule" required wire:model='payment_schedule'>
-                                        <option value="" disabled selected>Select a schedule</option>
-                                        <option value="monthly">Monthly</option>
-                                        <option value="weekly">Weekly</option>
-                                        <option value="daily">Daily</option>
-                                    </select>
-                                </div>
-
-                            </div>
-
-
-                            <div class="col-12">
-                                <div class="row y-gap-20 items-center justify-between">
-                                    <div class="col-auto">
-                                        <div class="text-14 text-light-1">
-                                            By proceeding with this Goal, I agree to Trvelr Terms of Use and Privacy
-                                            Policy.
-                                        </div>
-                                    </div>
-
-                                    <div class="col-auto">
-
-                                        <button type="submit" class="button h-60 px-24 -dark-1 bg-blue-1 text-white">
-                                            Set Savings Goal<div class="icon-arrow-top-right ml-15"></div>
-                                        </button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="w-full h-1 bg-border mt-40 mb-40"></div>
-
-                    {{-- <div class="mt-40">
+                    <div class="mt-40">
                         <h3 class="text-22 fw-500 mb-20">How do you want to pay?</h3>
 
                         <div class="row y-gap-20 x-gap-20">
@@ -117,57 +63,68 @@
                             <div class="col-auto">
                                 <button class="button -blue-1 bg-light-2 px-20 py-15">Digital Payment</button>
                             </div>
-                        </div>
-
-                        <div class="row x-gap-20 y-gap-20 pt-20">
-                            <div class="col-12">
-
-                                <div class="form-input ">
-                                    <input type="text" required>
-                                    <label class="lh-1 text-16 text-light-1">Select payment method *</label>
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6">
-
-                                <div class="form-input ">
-                                    <input type="text" required>
-                                    <label class="lh-1 text-16 text-light-1">Card holder name *</label>
-                                </div>
 
 
-                                <div class="form-input mt-20">
-                                    <input type="text" required>
-                                    <label class="lh-1 text-16 text-light-1">Credit/debit card number *</label>
-                                </div>
-
-
-                                <div class="row x-gap-20 y-gap-20 pt-20">
-                                    <div class="col-md-6">
-
-                                        <div class="form-input ">
-                                            <input type="text" required>
-                                            <label class="lh-1 text-16 text-light-1">Expiry date *</label>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-md-6">
-
-                                        <div class="form-input ">
-                                            <input type="text" required>
-                                            <label class="lh-1 text-16 text-light-1">CVC/CVV *</label>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <img src="img/booking-pages/card.png" alt="image" class="h-full">
+                            <div class="col-auto">
+                                <button class="button -blue-1 bg-light-2 px-20 py-15">Bank Transfer</button>
                             </div>
                         </div>
+
+                        @if ($method == 'card')
+                            <div class="row x-gap-20 y-gap-20 pt-20">
+                                <div class="col-12">
+
+                                    <div class="form-input ">
+                                        <input type="text" required>
+                                        <label class="lh-1 text-16 text-light-1">Select payment method *</label>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <div class="form-input ">
+                                        <input type="text" required>
+                                        <label class="lh-1 text-16 text-light-1">Card holder name *</label>
+                                    </div>
+
+
+                                    <div class="form-input mt-20">
+                                        <input type="text" required>
+                                        <label class="lh-1 text-16 text-light-1">Credit/debit card number *</label>
+                                    </div>
+
+
+                                    <div class="row x-gap-20 y-gap-20 pt-20">
+                                        <div class="col-md-6">
+
+                                            <div class="form-input ">
+                                                <input type="text" required>
+                                                <label class="lh-1 text-16 text-light-1">Expiry date *</label>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-6">
+
+                                            <div class="form-input ">
+                                                <input type="text" required>
+                                                <label class="lh-1 text-16 text-light-1">CVC/CVV *</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <img src="{{ asset('img/booking-pages/card.png') }}" alt="image" class="h-full">
+                                </div>
+                            </div>
+                        @elseif ($method == 'bank')
+
+                        @elseif($method == 'digital')
+
+                        @endif
                     </div>
 
                     <div class="mt-60 md:mt-32">
@@ -264,91 +221,6 @@
 
                         </div>
                     </div>
-
-                    <div class="border-light rounded-8 px-50 py-40 mt-40">
-                        <h4 class="text-20 fw-500 mb-30">Your Information</h4>
-
-                        <div class="row y-gap-10">
-
-                            <div class="col-12">
-                                <div class="d-flex justify-between ">
-                                    <div class="text-15 lh-16">First name</div>
-                                    <div class="text-15 lh-16 fw-500 text-blue-1">System</div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="d-flex justify-between border-top-light pt-10">
-                                    <div class="text-15 lh-16">Last name</div>
-                                    <div class="text-15 lh-16 fw-500 text-blue-1">Admin</div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="d-flex justify-between border-top-light pt-10">
-                                    <div class="text-15 lh-16">Email</div>
-                                    <div class="text-15 lh-16 fw-500 text-blue-1">admin@bookingcore.test</div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="d-flex justify-between border-top-light pt-10">
-                                    <div class="text-15 lh-16">Phone</div>
-                                    <div class="text-15 lh-16 fw-500 text-blue-1">112 666 888</div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="d-flex justify-between border-top-light pt-10">
-                                    <div class="text-15 lh-16">Address line 1</div>
-                                    <div class="text-15 lh-16 fw-500 text-blue-1"></div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="d-flex justify-between border-top-light pt-10">
-                                    <div class="text-15 lh-16">Address line 2</div>
-                                    <div class="text-15 lh-16 fw-500 text-blue-1"></div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="d-flex justify-between border-top-light pt-10">
-                                    <div class="text-15 lh-16">City</div>
-                                    <div class="text-15 lh-16 fw-500 text-blue-1">New York</div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="d-flex justify-between border-top-light pt-10">
-                                    <div class="text-15 lh-16">State/Province/Region</div>
-                                    <div class="text-15 lh-16 fw-500 text-blue-1"></div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="d-flex justify-between border-top-light pt-10">
-                                    <div class="text-15 lh-16">ZIP code/Postal code</div>
-                                    <div class="text-15 lh-16 fw-500 text-blue-1"></div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="d-flex justify-between border-top-light pt-10">
-                                    <div class="text-15 lh-16">Country</div>
-                                    <div class="text-15 lh-16 fw-500 text-blue-1">United States</div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="d-flex justify-between border-top-light pt-10">
-                                    <div class="text-15 lh-16">Special Requirements</div>
-                                    <div class="text-15 lh-16 fw-500 text-blue-1"></div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div> --}}
 
                 </div>
 
@@ -471,7 +343,8 @@
 
                     <div class="featureIcon -type-1 ">
                         <div class="d-flex justify-center">
-                            <img src="#" data-src="{{ asset('img/featureIcons/1/1.svg') }}" alt="image" class="js-lazy">
+                            <img src="#" data-src="{{ asset('img/featureIcons/1/1.svg') }}" alt="image"
+                                class="js-lazy">
                         </div>
 
                         <div class="text-center mt-30">
@@ -486,7 +359,8 @@
 
                     <div class="featureIcon -type-1 ">
                         <div class="d-flex justify-center">
-                            <img src="#" data-src="{{ asset('img/featureIcons/1/2.svg') }}" alt="image" class="js-lazy">
+                            <img src="#" data-src="{{ asset('img/featureIcons/1/2.svg') }}" alt="image"
+                                class="js-lazy">
                         </div>
 
                         <div class="text-center mt-30">
@@ -501,7 +375,8 @@
 
                     <div class="featureIcon -type-1 ">
                         <div class="d-flex justify-center">
-                            <img src="#" data-src="{{ asset('img/featureIcons/1/3.svg') }}" alt="image" class="js-lazy">
+                            <img src="#" data-src="{{ asset('img/featureIcons/1/3.svg') }}" alt="image"
+                                class="js-lazy">
                         </div>
 
                         <div class="text-center mt-30">
@@ -515,35 +390,4 @@
             </div>
         </div>
     </section>
-
-    {{-- <section class="layout-pt-md layout-pb-md bg-dark-2">
-        <div class="container">
-            <div class="row y-gap-30 justify-between items-center">
-                <div class="col-auto">
-                    <div class="row y-gap-20  flex-wrap items-center">
-                        <div class="col-auto">
-                            <div class="icon-newsletter text-60 sm:text-40 text-white"></div>
-                        </div>
-
-                        <div class="col-auto">
-                            <h4 class="text-26 text-white fw-600">Your Travel Journey Starts Here</h4>
-                            <div class="text-white">Sign up and we'll send the best deals to you</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-auto">
-                    <div class="single-field -w-410 d-flex x-gap-10 y-gap-20">
-                        <div>
-                            <input class="bg-white h-60" type="text" placeholder="Your Email">
-                        </div>
-
-                        <div>
-                            <button class="button -md h-60 bg-blue-1 text-white">Subscribe</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
 </div>

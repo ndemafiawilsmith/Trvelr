@@ -19,6 +19,18 @@
     <link rel="stylesheet" href="{{ asset('css/vendors.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
+    {{-- Toastr  --}}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+        integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <title>GoTrip</title>
     @livewireStyles()
 </head>
@@ -93,7 +105,7 @@
             <div class="sidebar -dashboard">
 
                 <div class="sidebar__item">
-                    <div class="sidebar__button @if(Route::currentRouteName() == 'user.dashboard') -is-active @endif">
+                    <div class="sidebar__button @if (Route::currentRouteName() == 'user.dashboard') -is-active @endif">
                         <a href="{{ route('user.dashboard') }}" class="d-flex items-center text-15 lh-1 fw-500">
                             <img src="{{ asset('img/dashboard/sidebar/compass.svg') }}" alt="image" class="mr-15">
                             Dashboard
@@ -102,7 +114,7 @@
                 </div>
 
                 <div class="sidebar__item">
-                    <div class="sidebar__button  @if(Route::currentRouteName() == 'plans') -is-active @endif">
+                    <div class="sidebar__button  @if (Route::currentRouteName() == 'plans') -is-active @endif">
                         <a href="{{ route('plans') }}" class="d-flex items-center text-15 lh-1 fw-500">
                             <img src="{{ asset('img/dashboard/sidebar/bookmark.svg') }}" alt="image" class="mr-15">
                             Planner
@@ -111,9 +123,10 @@
                 </div>
 
                 <div class="sidebar__item">
-                    <div class="sidebar__button  @if(Route::currentRouteName() == 'savings') -is-active @endif">
+                    <div class="sidebar__button  @if (Route::currentRouteName() == 'savings') -is-active @endif">
                         <a href="db-booking.html" class="d-flex items-center text-15 lh-1 fw-500">
-                            <img src="{{ asset('img/dashboard/icons/2.svg') }}" width="30px" alt="image" class="mr-15">
+                            <img src="{{ asset('img/dashboard/icons/2.svg') }}" width="30px" alt="image"
+                                class="mr-15">
                             Savings
                         </a>
                     </div>
@@ -160,7 +173,7 @@
                         <div class="col-auto">
                             <div class="row y-gap-20 items-center">
                                 <div class="col-auto">
-                                    <div class="text-14 lh-14 mr-30">© 2022 GoTrip LLC All rights reserved.</div>
+                                    <div class="text-14 lh-14 mr-30">© {{ Date('Y') }} Trvelr. All rights reserved.</div>
                                 </div>
 
                                 <div class="col-auto">
@@ -170,9 +183,6 @@
                                         </div>
                                         <div class="col-auto">
                                             <a href="#" class="text-13 lh-1">Terms</a>
-                                        </div>
-                                        <div class="col-auto">
-                                            <a href="#" class="text-13 lh-1">Site Map</a>
                                         </div>
                                     </div>
                                 </div>
@@ -219,6 +229,27 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <script>
+        window.addEventListener('feedback',event => {
+			toastr.options =
+                    {
+                        "closeButton" : true,
+                        "progressBar" : true
+                    }
+          	toastr.success(event.detail.feedback);
+        });
+
+        window.addEventListener('errfeedback',event => {
+			toastr.options =
+                    {
+                        "closeButton" : true,
+                        "progressBar" : true
+                    }
+          	toastr.error(event.detail.errfeedback);
+        });
+    </script>
 
     @livewireScripts()
 </body>

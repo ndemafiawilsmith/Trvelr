@@ -9,6 +9,8 @@ use App\Livewire\User\AddPlans;
 use App\Livewire\User\ComputePlan;
 use App\Livewire\User\Dashboard;
 use App\Livewire\User\PlanDetails;
+use App\Livewire\User\Save;
+use App\Livewire\User\Savings;
 use App\Livewire\User\SavingsGoalComponent;
 use App\Livewire\User\ViewPlans;
 use Illuminate\Support\Facades\Route;
@@ -55,4 +57,6 @@ Route::middleware(['role:user'])->group(function () {
     Route::get('/logout', [Dashboard::class, 'logout'])->name('user.logout');
 
     Route::get('savings/goals/{id}/create', SavingsGoalComponent::class)->name('savings.create');
+    Route::get('savings', Savings::class)->name('savings');
+    Route::get('savings/{id}/add', Save::class)->name('save');
 });

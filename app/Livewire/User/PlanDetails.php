@@ -25,19 +25,19 @@ class PlanDetails extends Component
 
     public function getImages($desc)
     {
-
-        $pixabayClient = new \Pixabay\PixabayClient([
-            'key' => '44352890-0bad1da01135aeecd7217db19'
-        ]);
-
-        // test it out
-        $results = $pixabayClient->get(['q' => $desc.', Africa'], true);
-
         $country = country::where('countryname', $desc)->first();
         $CountryImages = countryImages::where('country_id', $country->id)->count();
-        if($CountryImages > 0){
+        if ($CountryImages > 0) {
+        } else {
 
-        }else{
+
+            $pixabayClient = new \Pixabay\PixabayClient([
+                'key' => '44352890-0bad1da01135aeecd7217db19'
+            ]);
+
+            // test it out
+            $results = $pixabayClient->get(['q' => $desc . ', Africa'], true);
+
             foreach ($results['hits'] as $images) {
                 countryImages::create(
                     [

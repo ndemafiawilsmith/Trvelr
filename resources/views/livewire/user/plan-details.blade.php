@@ -697,14 +697,14 @@
 
                                                 <div class="dropdown js-dropdown js-price-1-active">
                                                     <div class="dropdown__button d-flex items-center rounded-4 border-light px-15 h-50 text-14"
-                                                        data-el-toggle=".js-price-1-toggle-{{ $activity->id }}"
+                                                        data-el-toggle=".js-price-1-toggle-{{ $loop->iteration }}"
                                                         data-el-toggle-active=".js-price-1-active">
                                                         <span class="js-dropdown-title">1 (US$ 3,120)</span>
                                                         <i class="icon icon-chevron-sm-down text-7 ml-10"></i>
                                                     </div>
 
                                                     <div
-                                                        class="toggle-element -dropdown  js-click-dropdown js-price-1-toggle-{{ $activity->id }}">
+                                                        class="toggle-element -dropdown  js-click-dropdown js-price-1-toggle-{{ $loop->iteration }}">
                                                         <div class="text-14 y-gap-15 js-dropdown-list">
 
                                                             <div><a href="#" class="d-block js-dropdown-link">2
@@ -743,7 +743,7 @@
                                         </a>
 
 
-                                        <div class="text-15 fw-500 mt-30">You'll be taken to the next step</div>
+                                        {{-- <div class="text-15 fw-500 mt-30">You'll be taken to the next step</div>
 
                                         <ul class="list-disc y-gap-4 pt-5">
 
@@ -753,7 +753,7 @@
 
                                             <li class="text-14">No booking or credit card fees!</li>
 
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                 </div>
                             </div>

@@ -61,7 +61,6 @@
 
                                             <div data-x-dd-click="searchMenu-loc">
                                                 <h4 class="text-15 fw-500 ls-2 lh-16">Location</h4>
-
                                                 <div class="text-15 text-light-1 ls-2 lh-16">
                                                     <input autocomplete="off" type="search"
                                                         placeholder="Where are you going?"
@@ -75,95 +74,24 @@
                                                 <div class="bg-white px-30 py-30 sm:px-0 sm:py-15 rounded-4">
                                                     <div class="y-gap-5 js-results">
 
-                                                        <div>
-                                                            <button
-                                                                class="-link d-block col-12 text-left rounded-4 px-20 py-15 js-search-option">
-                                                                <div class="d-flex">
-                                                                    <div
-                                                                        class="icon-location-2 text-light-1 text-20 pt-4">
-                                                                    </div>
-                                                                    <div class="ml-10">
+                                                        @foreach ($countries as $country)
+                                                            <div>
+                                                                <button
+                                                                    class="-link d-block col-12 text-left rounded-4 px-20 py-15 js-search-option">
+                                                                    <div class="d-flex">
                                                                         <div
-                                                                            class="text-15 lh-12 fw-500 js-search-option-target">
-                                                                            London</div>
-                                                                        <div class="text-14 lh-12 text-light-1 mt-5">
-                                                                            Greater London, United Kingdom</div>
+                                                                            class="icon-location-2 text-light-1 text-20 pt-4">
+                                                                        </div>
+                                                                        <div class="ml-10">
+                                                                            <div
+                                                                                class="text-15 lh-12 fw-500 js-search-option-target">
+                                                                                {{ $country->countryname }}</div>
+                                                                            {{-- <div class="text-14 lh-12 text-light-1 mt-5">{{ $country->countryname }}</div> --}}
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </button>
-                                                        </div>
-
-                                                        <div>
-                                                            <button
-                                                                class="-link d-block col-12 text-left rounded-4 px-20 py-15 js-search-option">
-                                                                <div class="d-flex">
-                                                                    <div
-                                                                        class="icon-location-2 text-light-1 text-20 pt-4">
-                                                                    </div>
-                                                                    <div class="ml-10">
-                                                                        <div
-                                                                            class="text-15 lh-12 fw-500 js-search-option-target">
-                                                                            New York</div>
-                                                                        <div class="text-14 lh-12 text-light-1 mt-5">New
-                                                                            York State, United States</div>
-                                                                    </div>
-                                                                </div>
-                                                            </button>
-                                                        </div>
-
-                                                        <div>
-                                                            <button
-                                                                class="-link d-block col-12 text-left rounded-4 px-20 py-15 js-search-option">
-                                                                <div class="d-flex">
-                                                                    <div
-                                                                        class="icon-location-2 text-light-1 text-20 pt-4">
-                                                                    </div>
-                                                                    <div class="ml-10">
-                                                                        <div
-                                                                            class="text-15 lh-12 fw-500 js-search-option-target">
-                                                                            Paris</div>
-                                                                        <div class="text-14 lh-12 text-light-1 mt-5">
-                                                                            France</div>
-                                                                    </div>
-                                                                </div>
-                                                            </button>
-                                                        </div>
-
-                                                        <div>
-                                                            <button
-                                                                class="-link d-block col-12 text-left rounded-4 px-20 py-15 js-search-option">
-                                                                <div class="d-flex">
-                                                                    <div
-                                                                        class="icon-location-2 text-light-1 text-20 pt-4">
-                                                                    </div>
-                                                                    <div class="ml-10">
-                                                                        <div
-                                                                            class="text-15 lh-12 fw-500 js-search-option-target">
-                                                                            Madrid</div>
-                                                                        <div class="text-14 lh-12 text-light-1 mt-5">
-                                                                            Spain</div>
-                                                                    </div>
-                                                                </div>
-                                                            </button>
-                                                        </div>
-
-                                                        <div>
-                                                            <button
-                                                                class="-link d-block col-12 text-left rounded-4 px-20 py-15 js-search-option">
-                                                                <div class="d-flex">
-                                                                    <div
-                                                                        class="icon-location-2 text-light-1 text-20 pt-4">
-                                                                    </div>
-                                                                    <div class="ml-10">
-                                                                        <div
-                                                                            class="text-15 lh-12 fw-500 js-search-option-target">
-                                                                            Santorini</div>
-                                                                        <div class="text-14 lh-12 text-light-1 mt-5">
-                                                                            Greece</div>
-                                                                    </div>
-                                                                </div>
-                                                            </button>
-                                                        </div>
+                                                                </button>
+                                                            </div>
+                                                        @endforeach
 
                                                     </div>
                                                 </div>
@@ -299,11 +227,13 @@
 
 
                                         <div class="button-item">
-                                            <button
+                                            <a href="@if(Auth::check()) {{ route('add.plan') }} @else {{ route('login') }} @endif">
+                                                <button
                                                 class="mainSearch__submit button -dark-1 h-60 px-35 col-12 rounded-100 bg-blue-1 text-white">
                                                 <i class="icon-search text-20 mr-10"></i>
                                                 Search
                                             </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

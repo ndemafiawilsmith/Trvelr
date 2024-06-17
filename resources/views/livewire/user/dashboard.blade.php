@@ -87,7 +87,7 @@
             <div class="py-30 px-30 rounded-4 bg-white shadow-3">
                 <div class="d-flex justify-between items-center">
                     <h2 class="text-18 lh-1 fw-500">
-                        Earning Statistics
+                        Savings Statistics
                     </h2>
 
 

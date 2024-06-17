@@ -57,7 +57,7 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <button type="submit" class="button py-20 -dark-1 bg-blue-1 text-white mx-15">
+                                    <button type="submit" class="button py-20 -dark-1 bg-blue-1 text-white px-20">
                                         Sign In <div class="icon-arrow-top-right ml-15"></div>
                                     </button>
                                 </div>

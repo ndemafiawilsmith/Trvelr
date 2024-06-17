@@ -8,8 +8,8 @@
         <div class="container">
           <div class="row justify-center text-center">
             <div class="col-xl-6 col-lg-8 col-md-10">
-              <h1 class="text-40 md:text-25 fw-600 text-white">Looking for joy?</h1>
-              <div class="text-white mt-15">Your trusted trip companion</div>
+              <h1 class="text-40 md:text-25 fw-600 text-white">Looking for an Itinerary Planner?</h1>
+              <div class="text-white mt-15">Trvelr your trusted trip planner</div>
             </div>
           </div>
         </div>
@@ -21,7 +21,7 @@
             <div class="col-auto">
               <div class="sectionTitle -md">
                 <h2 class="sectionTitle__title">Why Choose Us</h2>
-                <p class=" sectionTitle__text mt-5 sm:mt-0">These popular destinations have a lot to offer</p>
+                {{-- <p class=" sectionTitle__text mt-5 sm:mt-0">These popular destinations have a lot to offer</p> --}}
               </div>
             </div>
           </div>
@@ -37,7 +37,7 @@
 
                 <div class="text-center mt-30">
                   <h4 class="text-18 fw-500">Best Price Guarantee</h4>
-                  <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  {{-- <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> --}}
                 </div>
               </div>
 
@@ -52,7 +52,7 @@
 
                 <div class="text-center mt-30">
                   <h4 class="text-18 fw-500">Easy & Quick Booking</h4>
-                  <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  {{-- <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> --}}
                 </div>
               </div>
 
@@ -67,7 +67,7 @@
 
                 <div class="text-center mt-30">
                   <h4 class="text-18 fw-500">Customer Care 24/7</h4>
-                  <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  {{-- <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> --}}
                 </div>
               </div>
 
@@ -104,14 +104,14 @@
             <div class="row y-gap-30 justify-center text-center">
 
               <div class="col-xl-3 col-6">
-                <div class="text-40 lg:text-30 lh-13 fw-600">4,958</div>
-                <div class="text-14 lh-14 text-light-1 mt-5">Destinations</div>
+                <div class="text-40 lg:text-30 lh-13 fw-600">57</div>
+                <div class="text-14 lh-14 text-light-1 mt-5">African Destinations</div>
               </div>
 
-              <div class="col-xl-3 col-6">
+              {{-- <div class="col-xl-3 col-6">
                 <div class="text-40 lg:text-30 lh-13 fw-600">2,869</div>
                 <div class="text-14 lh-14 text-light-1 mt-5">Total Properties</div>
-              </div>
+              </div> --}}
 
               <div class="col-xl-3 col-6">
                 <div class="text-40 lg:text-30 lh-13 fw-600">2M</div>
@@ -119,8 +119,8 @@
               </div>
 
               <div class="col-xl-3 col-6">
-                <div class="text-40 lg:text-30 lh-13 fw-600">574,974</div>
-                <div class="text-14 lh-14 text-light-1 mt-5">Our Volunteers</div>
+                <div class="text-40 lg:text-30 lh-13 fw-600">2,000</div>
+                <div class="text-14 lh-14 text-light-1 mt-5">Tour Experts</div>
               </div>
 
             </div>
@@ -246,7 +246,7 @@
         </div>
       </section>
 
-      <section class="section-bg layout-pt-lg layout-pb-lg">
+      {{-- <section class="section-bg layout-pt-lg layout-pb-lg">
         <div class="section-bg__item -mx-20 bg-light-2"></div>
 
         <div class="container">
@@ -425,7 +425,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> --}}
 
       <section class="layout-pt-md layout-pb-md bg-dark-2">
         <div class="container">

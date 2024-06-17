@@ -155,7 +155,7 @@
             <div class="galleryGrid -type-1 pt-30">
                 <div class="galleryGrid__item relative d-flex">
                     @php
-                        $first = $photos[0]['previewURL'];
+                        $first = $photos[0]['imageURL'];
                     @endphp
                     <img src="{{ $first }}" alt="image" class="rounded-4">
 
@@ -167,7 +167,7 @@
                 </div>
 
                 @php
-                    $second = $photos[1]['previewURL'];
+                    $second = $photos[1]['imageURL'];
                 @endphp
                 <div class="galleryGrid__item">
                     <img src="{{ $second }}" alt="image" class="rounded-4">
@@ -175,7 +175,7 @@
 
 
                 @php
-                    $third = $photos[2]['previewURL'];
+                    $third = $photos[2]['imageURL'];
                 @endphp
                 <div class="galleryGrid__item relative d-flex">
                     <img src="{{ $third }}" alt="image" class="rounded-4">
@@ -191,7 +191,7 @@
 
 
                 @php
-                    $fourth = $photos[3]['previewURL'];
+                    $fourth = $photos[3]['imageURL'];
                 @endphp
                 <div class="galleryGrid__item">
                     <img src="{{ $fourth }}" alt="image" class="rounded-4">
@@ -199,7 +199,7 @@
 
 
                 @php
-                    $fifth = $photos[4]['previewURL'];
+                    $fifth = $photos[4]['imageURL'];
                 @endphp
                 <div class="galleryGrid__item relative d-flex">
                     <img src="{{ $fifth }}" alt="image" class="rounded-4">

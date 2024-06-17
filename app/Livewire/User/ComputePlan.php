@@ -97,7 +97,6 @@ class ComputePlan extends Component
         foreach ($stream as $response) {
             $this->result .= $response->text();
         }
-        $this->loading = false;
     }
 
 

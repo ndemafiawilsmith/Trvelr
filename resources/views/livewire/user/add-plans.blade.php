@@ -21,8 +21,37 @@
                 </div>
 
                 <div class="preloader__title">GoTrip</div>
-                <p class="" style="text-align: center;"><b>Fact about kenya</b>: OFFICIAL LANGUAGES: Swahili, English
-                </p>
+                @php
+                    $africa_travel_facts = [
+                        "The Sahara Desert is the largest hot desert in the world, covering approximately 9.2 million square kilometers.",
+                        "Africa is home to the longest river in the world, the Nile, which stretches about 6,650 kilometers (4,130 miles).",
+                        "Mount Kilimanjaro in Tanzania is the highest peak in Africa, standing at 5,895 meters (19,341 feet).",
+                        "The continent boasts the world's largest terrestrial animal, the African elephant, which can weigh up to 6,000 kg (13,227 lbs).",
+                        "Victoria Falls, located on the border of Zambia and Zimbabwe, is one of the largest and most famous waterfalls in the world.",
+                        "Africa has 54 countries, making it the continent with the most countries.",
+                        "The Great Migration in the Serengeti and Masai Mara is the largest terrestrial mammal migration in the world, involving over 1.5 million wildebeest and hundreds of thousands of other animals.",
+                        "Madagascar, an island country off the southeastern coast of Africa, is home to about 5% of the world's plant and animal species, many of which are not found anywhere else on Earth.",
+                        "Africa's Lake Victoria is the largest tropical lake in the world and the second-largest freshwater lake by surface area.",
+                        "The Namib Desert, one of the world's oldest deserts, features some of the highest sand dunes, with some reaching over 300 meters (980 feet)."
+                    ];
+
+                    $randomFact = $africa_travel_facts[array_rand($africa_travel_facts)];
+                @endphp
+                <p class="" id='randomFact' style="text-align: center;"><b>Trvelr AI:</b> Planning</p>
+                <p class="" style="text-align: center;"><b>Do you know</b>:{{$randomFact}}</p>
+                @push('scripts')
+                <script>
+                    const facts = @json($africa_travel_facts);
+                    let factIndex = 0;
+
+                    function showNextFact() {
+                        factIndex = (factIndex + 1) % facts.length;
+                        document.getElementById('randomFact').innerHTML = `<b>Do you know</b>: ${facts[factIndex]}`;
+                    }
+
+                    setInterval(showNextFact, 5000);
+                </script>
+                @endpush
             </div>
         </div>
     {{-- @else --}}
@@ -108,7 +137,7 @@
                             <form wire:submit.prevent='addTitle'>
                                 <div class="col-md-8">
                                     <input type="text" wire:model='title' class="form-control input-bordered"
-                                        placeholder="Trip to Tanzania">
+                                        placeholder="Vacation to Tanzania">
                                     @error('title')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -182,12 +211,12 @@
                                 <div class="col-md-8">
                                     <!-- Remark Textarea -->
                                     <textarea wire:model='remark' class="form-control input-bordered" rows="5"
-                                        placeholder="Add *
-                                        Add *
-                                        Add *
-                                        To the itinerary list"
-                                        style="text-align: justify;">
-                                </textarea>
+                                                placeholder="Add:
+                                        - Add cultural experiences for day 3.
+                                        - Include a visit to local markets on day 5.
+                                        - Suggest a local cuisine tasting event on day 7."
+                                                style="text-align: justify;">
+                                        </textarea>
 
                                     @error('remark')
                                         <p class="text-danger">{{ $message }}</p>

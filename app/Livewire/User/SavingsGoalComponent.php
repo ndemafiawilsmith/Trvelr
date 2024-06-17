@@ -38,7 +38,7 @@ class SavingsGoalComponent extends Component
     public function render()
     {
         $itinerary = itinerarie::findorfail($this->itineraryId);
-        $this->goal_amount = "$".(int)$itinerary->budget;
+        $this->goal_amount = $itinerary->budget;
         return view('livewire.user.savings-goal-component', with(compact('itinerary')));
     }
 

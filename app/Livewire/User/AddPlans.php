@@ -153,8 +153,6 @@ class AddPlans extends Component
 
         $this->loading = true;
 
-        sleep(3);
-
         // return redirect(route('compute', ['id' => $itinerary->id]));
 
          // Run Gemini API call asynchronously

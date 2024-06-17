@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('ip_address')->nullable(); // Added IP address
             $table->json('preferences')->nullable(); // Added preferences
             $table->json('travel_history')->nullable(); // Added travel history
-            $table->json('allergies')->nullable(); // Added allergies
+            $table->json('allergies')->nullable()->default(json_encode([])); // Added allergies
             $table->rememberToken();
             $table->timestamps();
         });

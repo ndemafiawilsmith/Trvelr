@@ -606,20 +606,20 @@
                             <h3 class="text-18 fw-500 mb-15">Day {{ $activity['day'] }}</h3>
                             <div class="roomGrid">
                                 <div class="roomGrid__header">
-                                    <div>Room Type</div>
+                                    <div></div>
                                     <div>Activities</div>
                                     <div>Date</div>
-                                    <div>Price for Day {{ $activity['day'] }}</div>
+                                    <div>Budget for Day {{ $activity['day'] }}</div>
                                     {{-- <div>Select Rooms</div> --}}
                                     <div></div>
                                 </div>
 
                                 <div class="roomGrid__grid">
                                     <div>
-                                        <div class="ratio ratio-1:1">
+                                        {{-- <div class="ratio ratio-1:1">
                                             <img src="{{ asset('img/backgrounds/1.png') }}" alt="image"
                                                 class="img-ratio rounded-4">
-                                        </div>
+                                        </div> --}}
 
                                         {{-- <div class="y-gap-5 mt-20">
 

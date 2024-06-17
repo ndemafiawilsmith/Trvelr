@@ -25,8 +25,8 @@
             <div class="py-30 px-30 rounded-4 bg-white shadow-3">
                 <div class="row y-gap-20 justify-between items-center">
                     <div class="col-auto">
-                        <div class="fw-500 lh-14">Pending</div>
-                        <div class="text-26 lh-16 fw-600 mt-5">$12,800</div>
+                        <div class="fw-500 lh-14">Budget</div>
+                        <div class="text-26 lh-16 fw-600 mt-5">${{ number_format($budget) }}</div>
                         <div class="text-15 lh-14 text-light-1 mt-5">Total pending</div>
                     </div>
 
@@ -41,9 +41,9 @@
             <div class="py-30 px-30 rounded-4 bg-white shadow-3">
                 <div class="row y-gap-20 justify-between items-center">
                     <div class="col-auto">
-                        <div class="fw-500 lh-14">Earnings</div>
-                        <div class="text-26 lh-16 fw-600 mt-5">$14,200</div>
-                        <div class="text-15 lh-14 text-light-1 mt-5">Total earnings</div>
+                        <div class="fw-500 lh-14">Savings</div>
+                        <div class="text-26 lh-16 fw-600 mt-5">${{ number_format($savedAmount) }}</div>
+                        <div class="text-15 lh-14 text-light-1 mt-5">Total savings</div>
                     </div>
 
                     <div class="col-auto">
@@ -57,19 +57,14 @@
             <div class="py-30 px-30 rounded-4 bg-white shadow-3">
                 <div class="row y-gap-20 justify-between items-center">
                     <div class="col-auto">
-                        <div class="fw-500 lh-14">Bookings</div>
-                        <div class="text-26 lh-16 fw-600 mt-5">$8,100</div>
-                        <div class="text-15 lh-14 text-light-1 mt-5">Total bookings</div>
-                    </div>
-
-                    <div class="col-auto">
-                        <img src="img/dashboard/icons/3.svg" alt="icon">
+                        {{-- <div class="fw-500 lh-14">Add Plan</div> --}}
+                        <a href="{{ route('add.plan') }}" class="btn btn-primary">Add Plans</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-xl-3 col-md-6">
+        {{-- <div class="col-xl-3 col-md-6">
             <div class="py-30 px-30 rounded-4 bg-white shadow-3">
                 <div class="row y-gap-20 justify-between items-center">
                     <div class="col-auto">
@@ -83,7 +78,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 

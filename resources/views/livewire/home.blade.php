@@ -15,7 +15,7 @@
               </div>
 
               <div data-anim-child="slide-up delay-6" class="tabs -underline mt-60 js-tabs">
-                <div class="tabs__controls d-flex x-gap-30 y-gap-20 justify-center sm:justify-start js-tabs-controls">
+                {{-- <div class="tabs__controls d-flex x-gap-30 y-gap-20 justify-center sm:justify-start js-tabs-controls">
 
                   <div class="">
                     <button class="tabs__button text-15 fw-500 text-white pb-4 js-tabs-button is-tab-el-active" data-tab-target=".-tab-item-1">Hotel</button>
@@ -45,7 +45,7 @@
                     <button class="tabs__button text-15 fw-500 text-white pb-4 js-tabs-button " data-tab-target=".-tab-item-7">Flights</button>
                   </div>
 
-                </div>
+                </div> --}}
 
                 <div class="tabs__content mt-30 md:mt-20 js-tabs-content">
 

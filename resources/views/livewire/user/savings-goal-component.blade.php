@@ -55,7 +55,7 @@
                             <div class="col-12">
 
                                 <div class="form-input ">
-                                    <input type="text" required wire:model='goal_amount'>
+                                    <input type="text" required wire:model='goal_amount' readonly>
                                     <label class="lh-1 text-16 text-light-1">Goal Amount</label>
                                 </div>
 
@@ -476,7 +476,7 @@
 
                         <div class="text-center mt-30">
                             <h4 class="text-18 fw-500">Best Price Guarantee</h4>
-                            <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            {{-- <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> --}}
                         </div>
                     </div>
 
@@ -491,7 +491,7 @@
 
                         <div class="text-center mt-30">
                             <h4 class="text-18 fw-500">Easy & Quick Booking</h4>
-                            <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            {{-- <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> --}}
                         </div>
                     </div>
 
@@ -506,7 +506,7 @@
 
                         <div class="text-center mt-30">
                             <h4 class="text-18 fw-500">Customer Care 24/7</h4>
-                            <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            {{-- <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> --}}
                         </div>
                     </div>
 

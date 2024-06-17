@@ -16,7 +16,7 @@ class ViewPlans extends Component
     }
     public function render()
     {
-        $plans = itinerarie::orderBy('created_at', 'desc')->where('user_id', Auth::user()->id)->get();
+        $plans = itinerarie::orderBy('created_at', 'asc')->where('user_id', Auth::user()->id)->get();
         return view('livewire.user.view-plans', with(compact('plans')));
     }
 }

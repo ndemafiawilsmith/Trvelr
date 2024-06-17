@@ -25,6 +25,12 @@ class SavingsGoalComponent extends Component
     public function mount($id){
         $this->dispatch('clickk', el: 'dashboard');
         $this->itineraryId = $id;
+
+        $saving = savings_goal::where('itinerary_id',$id)->count();
+        if($saving > 0){
+            $this->dispatch('feedback', feedback:'Goal already exist');
+            return redirect(route('plans'));
+        }
     }
 
 
@@ -32,6 +38,7 @@ class SavingsGoalComponent extends Component
     public function render()
     {
         $itinerary = itinerarie::findorfail($this->itineraryId);
+        $this->goal_amount = "$".(int)$itinerary->budget;
         return view('livewire.user.savings-goal-component', with(compact('itinerary')));
     }
 

@@ -3,6 +3,8 @@
 use App\Livewire\About;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
+use App\Livewire\BecomeExpert;
+use App\Livewire\ContactUs;
 use App\Livewire\Gemini\Test;
 use App\Livewire\Home;
 use App\Livewire\User\AddPlans;
@@ -33,6 +35,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', Home::class)->name('index');
 Route::get('/about', About::class)->name('about-us');
+Route::get('/contact', ContactUs::class)->name('contact-us');
+Route::get('/become-expert', BecomeExpert::class)->name('become.expert');
 Route::get('/account/login', Login::class)->name('login');
 Route::get('/account/register', Register::class)->name('signup');
 

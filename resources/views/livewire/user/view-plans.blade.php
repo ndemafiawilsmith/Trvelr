@@ -93,8 +93,8 @@
                                         <td>{{ $plan->title }}</td>
                                         <td class="lh-16">Start : {{ $plan->start_date->format('d/m/Y') }}<br>End : {{ $plan->end_date->format('d/m/Y') }}</td>
                                         <td class="fw-500">${{ number_format($plan->budget, 0, '.', ',') }}</td>
-                                        <td>$</td>
-                                        <td>$0</td>
+                                        <td>$@if($plan->savingsGoal) {{ number_format($plan->savingsGoal->saved_amount) }} @else 0 @endif</td>
+                                        <td>$@if($plan->savingsGoal) {{ number_format($plan->budget - $plan->savingsGoal->saved_amount) }} @else 0 @endif</td>
                                         <td><span
                                                 class="rounded-100 py-4 px-10 text-center text-14 fw-500 bg-yellow-4 text-yellow-3">Pending</span>
                                         </td>

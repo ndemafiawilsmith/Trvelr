@@ -34,6 +34,34 @@
 
     <title>GoTrip</title>
     @livewireStyles()
+
+
+    <style>
+        /* HTML: <div class="loader"></div> */
+        .loaderr {
+            width: 30px;
+            padding: 8px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: #25b09b;
+            --_m:
+                conic-gradient(#0000 10%, #000),
+                linear-gradient(#000 0 0) content-box;
+            -webkit-mask: var(--_m);
+            mask: var(--_m);
+            -webkit-mask-composite: source-out;
+            mask-composite: subtract;
+            animation: l3 1s infinite linear;
+        }
+
+        @keyframes l3 {
+            to {
+                transform: rotate(1turn)
+            }
+        }
+    </style>
+
+
 </head>
 
 {{-- // $search = $desc . ', Africa';
@@ -153,7 +181,8 @@
                 <div class="sidebar__item">
                     <div class="sidebar__button ">
                         <a href="{{ route('user.logout') }}" class="d-flex items-center text-15 lh-1 fw-500">
-                            <img src="{{ asset('img/dashboard/sidebar/log-out.svg') }}" alt="image" class="mr-15">
+                            <img src="{{ asset('img/dashboard/sidebar/log-out.svg') }}" alt="image"
+                                class="mr-15">
                             Logout
                         </a>
                     </div>
@@ -174,7 +203,8 @@
                         <div class="col-auto">
                             <div class="row y-gap-20 items-center">
                                 <div class="col-auto">
-                                    <div class="text-14 lh-14 mr-30">© {{ Date('Y') }} Trvelr. All rights reserved.</div>
+                                    <div class="text-14 lh-14 mr-30">© {{ Date('Y') }} Trvelr. All rights
+                                        reserved.</div>
                                 </div>
 
                                 <div class="col-auto">
@@ -233,22 +263,20 @@
 
 
     <script>
-        window.addEventListener('feedback',event => {
-			toastr.options =
-                    {
-                        "closeButton" : true,
-                        "progressBar" : true
-                    }
-          	toastr.success(event.detail.feedback);
+        window.addEventListener('feedback', event => {
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            }
+            toastr.success(event.detail.feedback);
         });
 
-        window.addEventListener('errfeedback',event => {
-			toastr.options =
-                    {
-                        "closeButton" : true,
-                        "progressBar" : true
-                    }
-          	toastr.error(event.detail.errfeedback);
+        window.addEventListener('errfeedback', event => {
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true
+            }
+            toastr.error(event.detail.errfeedback);
         });
     </script>
 

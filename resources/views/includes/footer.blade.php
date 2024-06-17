@@ -32,10 +32,10 @@
                     <h5 class="text-16 fw-500 mb-30">Support</h5>
                     <div class="d-flex y-gap-10 flex-column">
                         <a href="#">Contact</a>
-                        <a href="#">Legal Notice</a>
+                        {{-- <a href="#">Legal Notice</a>
                         <a href="#">Privacy Policy</a>
                         <a href="#">Terms and Conditions</a>
-                        <a href="#">Sitemap</a>
+                        <a href="#">Sitemap</a> --}}
                     </div>
                 </div>
 
@@ -84,13 +84,13 @@
                             </div>
                         </div>
 
-                        <div class="col-auto">
+                        {{-- <div class="col-auto">
                             <div class="d-flex x-gap-15">
                                 <a href="#">Privacy</a>
                                 <a href="#">Terms</a>
                                 <a href="#">Site Map</a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 

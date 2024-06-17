@@ -41,6 +41,9 @@
                                     <a href="#" class="text-14 fw-500 text-blue-1 underline">Forgot your
                                         password?</a>
                                 </div>
+                                <div wire:loading>
+                                    <div class="loaderr"></div>
+                                </div>
 
                                 <div class="col-12">
                                     <button type="submit" class="button py-20 -dark-1 bg-blue-1 text-white px-20">

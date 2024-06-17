@@ -76,8 +76,8 @@
                                     }
                                 @endphp
                                 <div class="text-14">
-                                    From
-                                    <span class="text-22 text-dark-1 fw-500">US${{ $total_budget }}</span>
+                                    Total
+                                    <span class="text-22 text-dark-1 fw-500">US${{ number_format($total_budget) }}</span>
                                 </div>
                             </div>
 
@@ -104,7 +104,7 @@
                             <h1 class="text-30 sm:text-25 fw-600">{{ $itinerary->title }}</h1>
                         </div>
 
-                        <div class="col-auto">
+                        {{-- <div class="col-auto">
 
                             <i class="icon-star text-10 text-yellow-1"></i>
 
@@ -116,7 +116,7 @@
 
                             <i class="icon-star text-10 text-yellow-1"></i>
 
-                        </div>
+                        </div> --}}
                     </div>
 
                     <div class="row x-gap-20 y-gap-20 items-center">
@@ -127,9 +127,9 @@
                             </div>
                         </div>
 
-                        <div class="col-auto">
+                        {{-- <div class="col-auto">
                             <button data-x-click="mapFilter" class="text-blue-1 text-15 underline">Show on map</button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -137,18 +137,17 @@
                     <div class="row x-gap-15 y-gap-15 items-center">
                         <div class="col-auto">
                             <div class="text-14">
-                                From
-                                <span class="text-22 text-dark-1 fw-500">US${{ $total_budget }}</span>
-                            </div>
+                                Total
+                                <span class="text-22 text-dark-1 fw-500">US${{ number_format($total_budget) }}
                         </div>
 
-                        <div class="col-auto">
+                        {{-- <div class="col-auto">
 
                             <a href="#" class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
                                 Select Room <div class="icon-arrow-top-right ml-15"></div>
                             </a>
 
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -611,7 +610,7 @@
                                     <div>Activities</div>
                                     <div>Date</div>
                                     <div>Price for Day {{ $activity['day'] }}</div>
-                                    <div>Select Rooms</div>
+                                    {{-- <div>Select Rooms</div> --}}
                                     <div></div>
                                 </div>
 
@@ -654,14 +653,12 @@
 
                                         <div class="roomGrid__content">
                                             <div>
-                                                <div class="text-15 fw-500 mb-10">Your price includes:</div>
-
                                                 <div class="y-gap-8">
 
                                                     @foreach ($activity['activities'] as $daily)
                                                         <div class="d-flex items-center text-green-2">
                                                             <i class="icon-check text-12 mr-10"></i>
-                                                            <div class="text-15">{{ $daily['time'] }}:
+                                                            <div class="text-15"><span class="text-dark font-weight-bold">{{ $daily['time'].":" }}</span>
                                                                 {{ $daily['activity'] }}</div>
                                                             <span
                                                                 style="color:black; text-style:bold;">{{ $daily['budget'] }}</span>
@@ -693,7 +690,7 @@
                                                 </div>
                                             </div>
 
-                                            <div>
+                                            {{-- <div>
 
                                                 <div class="dropdown js-dropdown js-price-1-active">
                                                     <div class="dropdown__button d-flex items-center rounded-4 border-light px-15 h-50 text-14"
@@ -727,12 +724,12 @@
                                                     </div>
                                                 </div>
 
-                                            </div>
+                                            </div> --}}
                                         </div>
 
                                     </div>
 
-                                    <div>
+                                    {{-- <div>
                                         <div class="text-14 lh-1">3 rooms for</div>
                                         <div class="text-22 fw-500 lh-17 mt-5">US$72</div>
 
@@ -743,7 +740,7 @@
                                         </a>
 
 
-                                        {{-- <div class="text-15 fw-500 mt-30">You'll be taken to the next step</div>
+                                        <div class="text-15 fw-500 mt-30">You'll be taken to the next step</div>
 
                                         <ul class="list-disc y-gap-4 pt-5">
 
@@ -753,8 +750,8 @@
 
                                             <li class="text-14">No booking or credit card fees!</li>
 
-                                        </ul> --}}
-                                    </div>
+                                        </ul>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

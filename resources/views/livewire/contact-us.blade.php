@@ -74,17 +74,17 @@
 
                 <div class="col-lg-3">
                     <div class="text-14 text-light-1">Address</div>
-                    <div class="text-18 fw-500 mt-10">328 Queensberry Street, North Melbourne VIC 3051, Australia.</div>
+                    <div class="text-18 fw-500 mt-10">Nigeria</div>
                 </div>
 
                 <div class="col-auto">
                     <div class="text-14 text-light-1">Toll Free Customer Care</div>
-                    <div class="text-18 fw-500 mt-10">+(1) 123 456 7890</div>
+                    <div class="text-18 fw-500 mt-10">+(234) 810 050 2093</div>
                 </div>
 
                 <div class="col-auto">
                     <div class="text-14 text-light-1">Need live support?</div>
-                    <div class="text-18 fw-500 mt-10">hi@gotrip.com</div>
+                    <div class="text-18 fw-500 mt-10">hi@trvelr.com</div>
                 </div>
 
                 <div class="col-auto">
@@ -106,7 +106,7 @@
                 <div class="col-auto">
                     <div class="sectionTitle -md">
                         <h2 class="sectionTitle__title">Why Choose Us</h2>
-                        <p class=" sectionTitle__text mt-5 sm:mt-0">These popular destinations have a lot to offer</p>
+                        {{-- <p class=" sectionTitle__text mt-5 sm:mt-0">These popular destinations have a lot to offer</p> --}}
                     </div>
                 </div>
             </div>
@@ -122,7 +122,7 @@
 
                         <div class="text-center mt-30">
                             <h4 class="text-18 fw-500">Best Price Guarantee</h4>
-                            <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            {{-- <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> --}}
                         </div>
                     </div>
 
@@ -137,7 +137,7 @@
 
                         <div class="text-center mt-30">
                             <h4 class="text-18 fw-500">Easy & Quick Booking</h4>
-                            <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            {{-- <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> --}}
                         </div>
                     </div>
 
@@ -152,7 +152,7 @@
 
                         <div class="text-center mt-30">
                             <h4 class="text-18 fw-500">Customer Care 24/7</h4>
-                            <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            {{-- <p class="text-15 mt-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> --}}
                         </div>
                     </div>
 

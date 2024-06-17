@@ -10860,8 +10860,8 @@ div[data-slider] > input[type=range]::-ms-tooltip {
 
 .roomGrid__content {
   display: grid;
-  grid-template-columns: 1fr 60px 170px 140px;
-  gap: 40px;
+  grid-template-columns: 1fr 100px 170px 140px;
+  gap: 20px;
 }
 
 @media (max-width: 767px) {

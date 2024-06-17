@@ -189,6 +189,11 @@
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
+
+                                <div wire:loading class="flex">
+                                    <div class="loaderr"></div>
+                                    <p>Generating Itineraries with AI</p>
+                                </div>
                                 <div class="d-flex">
                                     <button class="btn btn-primary" wire:click="prev()">Prev</button>
                                     <button class="btn btn-primary ml-auto" type="submit">Submit</button>

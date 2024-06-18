@@ -19,6 +19,13 @@
                                     </div>
                                     @error('fullName') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
+                                <div class="col-12">
+                                    <div class="form-input">
+                                        <input type="text" wire:model="allergie" placeholder="Peanut,Grains">
+                                        <label class="lh-1 text-14 text-light-1">Allergies (Seperated by comma)</label>
+                                    </div>
+                                    @error('allergie') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
 
                                 <div class="col-12">
                                     <div class="form-input">

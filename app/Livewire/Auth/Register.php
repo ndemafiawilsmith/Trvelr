@@ -15,6 +15,7 @@ class Register extends Component
     public $password;
     public $passwordConfirmation;
     public $promo;
+    public $allergie;
 
     protected $rules = [
         'fullName' => 'required|string|min:6',
@@ -27,9 +28,18 @@ class Register extends Component
     {
         $this->validate();
 
+        $allergies = $this->allergie;
+
+        // Split the string into an array
+        $allergiesArray = explode(',', $allergies);
+
+        // Convert the array to JSON
+        $allergiesJson = json_encode($allergiesArray);
+
         $user = User::create([
             'name' => $this->fullName,
             'email' => $this->email,
+            'allergies' => $allergiesJson,
             'password' => Hash::make($this->password),
             'ip_address' => $request->ip(),
         ]);

@@ -6,6 +6,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+		<meta property="og:locale" content="en_NG">
+		<meta property="og:url" content="{{url()->current()}}">
+		<meta property="og:title" content="{{ $title ?? 'Trvelr'}}">
+		<meta property="og:description"
+			content="{{ $description ?? 'At Trvelr we believe that planning a vacation should be as enjoyable as the trip itself.
+Our mission is to help you save money for your dream vacations in a fun, easy, and stress-free way. Leveraging the power of AI, we curate personalized itineraries tailored to your preferences and interests, making every journey unique and unforgettable.
+'}}">
+		<meta property="og:image" content="{{ asset('img/favicon.png') }}">
+		<meta name="google:card" content="summary_large_image">
+		<meta name="google:description"
+			content="{{ $description ?? 'At Trvelr we believe that planning a vacation should be as enjoyable as the trip itself.
+Our mission is to help you save money for your dream vacations in a fun, easy, and stress-free way. Leveraging the power of AI, we curate personalized itineraries tailored to your preferences and interests, making every journey unique and unforgettable.
+'}}">
+		<meta name="google:title" content="{{ $title ?? 'Trvelr'}}">
+		<meta name="google:image" content="{{ asset('img/favicon.png') }}">
+		<meta name="description"
+			content="{{ $description ?? 'At Trvelr we believe that planning a vacation should be as enjoyable as the trip itself.
+Our mission is to help you save money for your dream vacations in a fun, easy, and stress-free way. Leveraging the power of AI, we curate personalized itineraries tailored to your preferences and interests, making every journey unique and unforgettable.
+'}}" />
+		<meta name="author" content="Trvelr" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="keywords"
+			content="Trvelr, vacation planning, AI travel app, personalized itineraries, save money for vacations, dream vacations, stress-free travel planning, easy travel planning, fun travel planning, unique journeys, unforgettable travel experiences, travel savings, customized travel plans, travel budget management, travel recommendations" />
+
+
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +58,7 @@
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <title>GoTrip</title>
+    <title>Trvelr</title>
     @livewireStyles()
 
 

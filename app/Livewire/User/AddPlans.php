@@ -107,7 +107,6 @@ class AddPlans extends Component
         $startDate = $itinerary->start_date;
         $endDate = $itinerary->end_date;
         $allergies = Auth::user()->allergies; // Assuming allergies are fixed or can be set similarly
-        $allergies = implode(", ", $allergies);
         $remark = $itinerary->remark;
 
 

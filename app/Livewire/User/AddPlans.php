@@ -185,7 +185,7 @@ class AddPlans extends Component
             // foreach ($stream as $response) {
             //     $this->result .= $response->text();
             // }
-            $this->result->text();
+            $this->result = $stream->text();
         } catch (\Exception $e) {
             // Dump and die the error for debugging
             dd($e);

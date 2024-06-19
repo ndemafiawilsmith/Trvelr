@@ -7,6 +7,7 @@ use App\Livewire\BecomeExpert;
 use App\Livewire\ContactUs;
 use App\Livewire\Gemini\Test;
 use App\Livewire\Home;
+use App\Livewire\ItineraryGenerator;
 use App\Livewire\User\AddPlans;
 use App\Livewire\User\ComputePlan;
 use App\Livewire\User\Dashboard;
@@ -42,6 +43,7 @@ Route::get('/account/register', Register::class)->name('signup');
 
 
 Route::get('/gemini', Test::class)->name('gemini');
+
 
 
 

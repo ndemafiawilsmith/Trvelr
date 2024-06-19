@@ -8,6 +8,9 @@ use Gemini\Laravel\Facades\Gemini;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Log;
+use GuzzleHttp\Exception\RequestException;
 
 class AddPlans extends Component
 {
@@ -177,16 +180,20 @@ class AddPlans extends Component
     {
         try {
             // Asynchronously call Gemini API (this example assumes a synchronous call for simplicity)
-            $stream = Gemini::geminipro()->streamGenerateContent($prompt);
+            $stream = Gemini::geminipro()->generateContent($prompt);
 
-            foreach ($stream as $response) {
-                $this->result .= $response->text();
-            }
+            // foreach ($stream as $response) {
+            //     $this->result .= $response->text();
+            // }
+            $this->result->text();
         } catch (\Exception $e) {
             // Dump and die the error for debugging
             dd($e);
         }
+
     }
+
+
 
 
 

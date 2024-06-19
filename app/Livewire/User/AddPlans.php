@@ -175,13 +175,19 @@ class AddPlans extends Component
 
     public function generateItinerary($prompt)
     {
-        // Asynchronously call Gemini API (this example assumes a synchronous call for simplicity)
-        $stream = Gemini::geminipro()->streamGenerateContent($prompt);
+        try {
+            // Asynchronously call Gemini API (this example assumes a synchronous call for simplicity)
+            $stream = Gemini::geminipro()->streamGenerateContent($prompt);
 
-        foreach ($stream as $response) {
-            $this->result .= $response->text();
+            foreach ($stream as $response) {
+                $this->result .= $response->text();
+            }
+        } catch (\Exception $e) {
+            // Dump and die the error for debugging
+            dd($e);
         }
     }
+
 
 
 

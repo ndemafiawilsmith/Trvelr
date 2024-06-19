@@ -11,6 +11,7 @@ use Livewire\Component;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Log;
 use GuzzleHttp\Exception\RequestException;
+use Illuminate\Support\Facades\Http;
 
 class AddPlans extends Component
 {
@@ -179,18 +180,41 @@ class AddPlans extends Component
     public function generateItinerary($prompt)
     {
         try {
-            // Asynchronously call Gemini API (this example assumes a synchronous call for simplicity)
-            $stream = Gemini::geminipro()->generateContent($prompt);
+            // Make the POST request to the external API
+            $response = Http::post('https://e-mpactpharma.com/api/gemini', [
+                'prompt' => $prompt,
+                'code' => "J@mes"
+            ]);
 
-            // foreach ($stream as $response) {
-            //     $this->result .= $response->text();
-            // }
-            // Addedd other API
-            $this->result = $stream->text();
+            // Check if the request was successful
+            if ($response->successful()) {
+                // Return the response body as JSON
+                $this->result = $response->json();
+                // dd($response->json());
+                // return response()->json($response->json(), 201);
+            } else {
+                // Handle the failed request
+                return response()->json(['error' => 'Failed to fetch data from Gemini API'], $response->status());
+            }
         } catch (\Exception $e) {
-            // Dump and die the error for debugging
-            dd($e);
+            // Handle exceptions
+            return response()->json(['error' => $e->getMessage()], 500);
         }
+
+
+        // try {
+        //     // Asynchronously call Gemini API (this example assumes a synchronous call for simplicity)
+        //     $stream = Gemini::geminipro()->generateContent($prompt);
+
+        //     // foreach ($stream as $response) {
+        //     //     $this->result .= $response->text();
+        //     // }
+        //     // Addedd other API
+        //     $this->result = $stream->text();
+        // } catch (\Exception $e) {
+        //     // Dump and die the error for debugging
+        //     dd($e);
+        // }
 
     }
 

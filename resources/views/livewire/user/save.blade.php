@@ -206,7 +206,7 @@
 
                     <div class="w-full h-1 bg-border mt-40 mb-40"></div>
 
-                    <div class="d-flex flex-column items-center mt-60 lg:md-40 sm:mt-24">
+                    {{-- <div class="d-flex flex-column items-center mt-60 lg:md-40 sm:mt-24">
                         <div class="size-80 flex-center rounded-full bg-dark-3">
                             <i class="icon-check text-30 text-white"></i>
                         </div>
@@ -240,7 +240,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
 

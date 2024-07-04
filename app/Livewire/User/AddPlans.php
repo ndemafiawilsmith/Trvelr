@@ -23,7 +23,7 @@ class AddPlans extends Component
     public $remark;
     public $travelCompanion;
     public $step = 1;
-    public $loading = false;
+    public $loading;
     public $result;
 
 
@@ -154,7 +154,7 @@ class AddPlans extends Component
          ";
 
 
-        $this->loading = true;
+        $this->loading = 1;
 
         // return redirect(route('compute', ['id' => $itinerary->id]));
 

@@ -20,7 +20,7 @@
                     </div>
                 </div>
 
-                <div class="preloader__title">GoTrip</div>
+                <div class="preloader__title">Trvelr</div>
                 @php
                     $africa_travel_facts = [
                         "The Sahara Desert is the largest hot desert in the world, covering approximately 9.2 million square kilometers.",
@@ -223,10 +223,12 @@
                                     @enderror
                                 </div>
 
-                                <div wire:loading class="flex">
-                                    <div class="loaderr"></div>
-                                    <p>Generating Itineraries with AI</p>
-                                </div>
+                                @if ($loading == 1)
+                                    <div class="flex">
+                                        <div class="loaderr"></div>
+                                        {{-- <p>Generating Itineraries with AI</p> --}}
+                                    </div>
+                                @endif
                                 <div class="d-flex">
                                     <button class="btn btn-primary" wire:click="prev()">Prev</button>
                                     <button class="btn btn-primary ml-auto" type="submit">Submit</button>

@@ -21,7 +21,7 @@
 
     <div class="row y-gap-30">
 
-        <div class="col-xl-3 col-md-6">
+        <div class="col-xl-4 col-md-6">
             <div class="py-30 px-30 rounded-4 bg-white shadow-3">
                 <div class="row y-gap-20 justify-between items-center">
                     <div class="col-auto">
@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div class="col-xl-3 col-md-6">
+        <div class="col-xl-4 col-md-6">
             <div class="py-30 px-30 rounded-4 bg-white shadow-3">
                 <div class="row y-gap-20 justify-between items-center">
                     <div class="col-auto">

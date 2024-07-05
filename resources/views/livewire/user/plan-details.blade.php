@@ -39,6 +39,14 @@
         $activites = json_decode($itinerary->activities, true);
         // dd($activites);
     @endphp
+
+    <style>
+        .scrollable-div {
+            height: 500px;
+            /* Set the height as needed */
+            overflow-y: auto;
+        }
+    </style>
     <div class="singleMenu js-singleMenu">
         <div class="singleMenu__content">
             <div class="container">
@@ -77,7 +85,8 @@
                                 @endphp
                                 <div class="text-14">
                                     Total
-                                    <span class="text-22 text-dark-1 fw-500">US${{ number_format($total_budget) }}</span>
+                                    <span
+                                        class="text-22 text-dark-1 fw-500">US${{ number_format($total_budget) }}</span>
                                 </div>
                             </div>
 
@@ -139,84 +148,84 @@
                             <div class="text-14">
                                 Total
                                 <span class="text-22 text-dark-1 fw-500">US${{ number_format($total_budget) }}
-                        </div>
+                            </div>
 
-                        {{-- <div class="col-auto">
+                            {{-- <div class="col-auto">
 
                             <a href="#" class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
                                 Select Room <div class="icon-arrow-top-right ml-15"></div>
                             </a>
 
                         </div> --}}
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="galleryGrid -type-1 pt-30">
-                <div class="galleryGrid__item relative d-flex">
+                <div class="galleryGrid -type-1 pt-30">
+                    <div class="galleryGrid__item relative d-flex">
+                        @php
+                            $first = $photos[0]['imageURL'];
+                        @endphp
+                        <img src="{{ $first }}" alt="image" class="rounded-4">
+
+                        <div class="absolute px-20 py-20 col-12 d-flex justify-end">
+                            <button class="button -blue-1 size-40 rounded-full flex-center bg-white text-dark-1">
+                                <i class="icon-heart text-16"></i>
+                            </button>
+                        </div>
+                    </div>
+
                     @php
-                        $first = $photos[0]['imageURL'];
+                        $second = $photos[1]['imageURL'];
                     @endphp
-                    <img src="{{ $first }}" alt="image" class="rounded-4">
-
-                    <div class="absolute px-20 py-20 col-12 d-flex justify-end">
-                        <button class="button -blue-1 size-40 rounded-full flex-center bg-white text-dark-1">
-                            <i class="icon-heart text-16"></i>
-                        </button>
+                    <div class="galleryGrid__item">
+                        <img src="{{ $second }}" alt="image" class="rounded-4">
                     </div>
-                </div>
-
-                @php
-                    $second = $photos[1]['imageURL'];
-                @endphp
-                <div class="galleryGrid__item">
-                    <img src="{{ $second }}" alt="image" class="rounded-4">
-                </div>
 
 
-                @php
-                    $third = $photos[2]['imageURL'];
-                @endphp
-                <div class="galleryGrid__item relative d-flex">
-                    <img src="{{ $third }}" alt="image" class="rounded-4">
+                    @php
+                        $third = $photos[2]['imageURL'];
+                    @endphp
+                    <div class="galleryGrid__item relative d-flex">
+                        <img src="{{ $third }}" alt="image" class="rounded-4">
 
-                    <div class="absolute h-full col-12 flex-center">
-                        <a href="https://www.youtube.com/watch?v=ANYfx4-jyqY"
-                            class="button -blue-1 size-40 rounded-full flex-center bg-white text-dark-1 js-gallery"
-                            data-gallery="gallery1">
-                            <i class="icon-play text-16"></i>
-                        </a>
+                        <div class="absolute h-full col-12 flex-center">
+                            <a href="https://www.youtube.com/watch?v=ANYfx4-jyqY"
+                                class="button -blue-1 size-40 rounded-full flex-center bg-white text-dark-1 js-gallery"
+                                data-gallery="gallery1">
+                                <i class="icon-play text-16"></i>
+                            </a>
+                        </div>
                     </div>
-                </div>
 
 
-                @php
-                    $fourth = $photos[3]['imageURL'];
-                @endphp
-                <div class="galleryGrid__item">
-                    <img src="{{ $fourth }}" alt="image" class="rounded-4">
-                </div>
+                    @php
+                        $fourth = $photos[3]['imageURL'];
+                    @endphp
+                    <div class="galleryGrid__item">
+                        <img src="{{ $fourth }}" alt="image" class="rounded-4">
+                    </div>
 
 
-                @php
-                    $fifth = $photos[4]['imageURL'];
-                @endphp
-                <div class="galleryGrid__item relative d-flex">
-                    <img src="{{ $fifth }}" alt="image" class="rounded-4">
+                    @php
+                        $fifth = $photos[4]['imageURL'];
+                    @endphp
+                    <div class="galleryGrid__item relative d-flex">
+                        <img src="{{ $fifth }}" alt="image" class="rounded-4">
 
-                    <div class="absolute px-10 py-10 col-12 h-full d-flex justify-end items-end">
-                        <a href="javascript:void(0);"
-                            class="button -blue-1 px-24 py-15 bg-white text-dark-1 js-gallery">
-                            Credits Pixabay
-                        </a>
-                        <a href="img/gallery/1/2.png" class="js-gallery" data-gallery="gallery2"></a>
-                        <a href="img/gallery/1/3.png" class="js-gallery" data-gallery="gallery2"></a>
-                        <a href="img/gallery/1/4.png" class="js-gallery" data-gallery="gallery2"></a>
-                        <a href="img/gallery/1/5.png" class="js-gallery" data-gallery="gallery2"></a>
+                        <div class="absolute px-10 py-10 col-12 h-full d-flex justify-end items-end">
+                            <a href="javascript:void(0);"
+                                class="button -blue-1 px-24 py-15 bg-white text-dark-1 js-gallery">
+                                Credits Pixabay
+                            </a>
+                            <a href="img/gallery/1/2.png" class="js-gallery" data-gallery="gallery2"></a>
+                            <a href="img/gallery/1/3.png" class="js-gallery" data-gallery="gallery2"></a>
+                            <a href="img/gallery/1/4.png" class="js-gallery" data-gallery="gallery2"></a>
+                            <a href="img/gallery/1/5.png" class="js-gallery" data-gallery="gallery2"></a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <section class="pt-30">
@@ -591,7 +600,7 @@
         </div>
     </section>
 
-    <section id="rooms" class="pt-30">
+    {{-- <section id="rooms" class="pt-30">
         <div class="container">
             <div class="row pb-20">
                 <div class="col-auto">
@@ -610,43 +619,11 @@
                                     <div>Activities</div>
                                     <div>Date</div>
                                     <div>Budget for Day {{ $activity['day'] }}</div>
-                                    {{-- <div>Select Rooms</div> --}}
                                     <div></div>
                                 </div>
 
                                 <div class="roomGrid__grid">
                                     <div>
-                                        {{-- <div class="ratio ratio-1:1">
-                                            <img src="{{ asset('img/backgrounds/1.png') }}" alt="image"
-                                                class="img-ratio rounded-4">
-                                        </div> --}}
-
-                                        {{-- <div class="y-gap-5 mt-20">
-
-                                            <div class="d-flex items-center">
-                                                <i class="icon-no-smoke text-20 mr-10"></i>
-                                                <div class="text-15">Non-smoking rooms</div>
-                                            </div>
-
-                                            <div class="d-flex items-center">
-                                                <i class="icon-wifi text-20 mr-10"></i>
-                                                <div class="text-15">Free WiFi</div>
-                                            </div>
-
-                                            <div class="d-flex items-center">
-                                                <i class="icon-parking text-20 mr-10"></i>
-                                                <div class="text-15">Parking</div>
-                                            </div>
-
-                                            <div class="d-flex items-center">
-                                                <i class="icon-kitchen text-20 mr-10"></i>
-                                                <div class="text-15">Kitchen</div>
-                                            </div>
-
-                                        </div>
-
-                                        <a href="#" class="d-block text-15 fw-500 underline text-blue-1 mt-15">Show
-                                            Room Information</a> --}}
                                     </div>
 
                                     <div class="y-gap-30">
@@ -689,75 +666,229 @@
                                                 <div class="text-14 lh-18 text-light-1">Includes taxes and charges
                                                 </div>
                                             </div>
-
-                                            {{-- <div>
-
-                                                <div class="dropdown js-dropdown js-price-1-active">
-                                                    <div class="dropdown__button d-flex items-center rounded-4 border-light px-15 h-50 text-14"
-                                                        data-el-toggle=".js-price-1-toggle-{{ $loop->iteration }}"
-                                                        data-el-toggle-active=".js-price-1-active">
-                                                        <span class="js-dropdown-title">1 (US$ 3,120)</span>
-                                                        <i class="icon icon-chevron-sm-down text-7 ml-10"></i>
-                                                    </div>
-
-                                                    <div
-                                                        class="toggle-element -dropdown  js-click-dropdown js-price-1-toggle-{{ $loop->iteration }}">
-                                                        <div class="text-14 y-gap-15 js-dropdown-list">
-
-                                                            <div><a href="#" class="d-block js-dropdown-link">2
-                                                                    (US$
-                                                                    3,120)</a></div>
-
-                                                            <div><a href="#" class="d-block js-dropdown-link">3
-                                                                    (US$
-                                                                    3,120)</a></div>
-
-                                                            <div><a href="#" class="d-block js-dropdown-link">4
-                                                                    (US$
-                                                                    3,120)</a></div>
-
-                                                            <div><a href="#" class="d-block js-dropdown-link">5
-                                                                    (US$
-                                                                    3,120)</a></div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div> --}}
                                         </div>
 
                                     </div>
 
-                                    {{-- <div>
-                                        <div class="text-14 lh-1">3 rooms for</div>
-                                        <div class="text-22 fw-500 lh-17 mt-5">US$72</div>
-
-
-                                        <a href="#"
-                                            class="button h-50 px-24 -dark-1 bg-blue-1 text-white mt-10">
-                                            Reserve <div class="icon-arrow-top-right ml-15"></div>
-                                        </a>
-
-
-                                        <div class="text-15 fw-500 mt-30">You'll be taken to the next step</div>
-
-                                        <ul class="list-disc y-gap-4 pt-5">
-
-                                            <li class="text-14">Confirmation is immediate</li>
-
-                                            <li class="text-14">No registration required</li>
-
-                                            <li class="text-14">No booking or credit card fees!</li>
-
-                                        </ul>
-                                    </div> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             @endforeach
+        </div>
+    </section> --}}
+
+    <section>
+        <div class="container">
+            <h3 class="text-22 fw-500 mb-20">Itinerary</h3>
+
+            <div class="row y-gap-30">
+                <div class="col-lg-4 scrollable-div">
+                    <div class="relative">
+                        <div class="border-test"></div>
+
+                        <div class="accordion -map row y-gap-20 js-accordion">
+
+                            @foreach ($activites as $activity)
+                                <div class="col-12">
+                                    <div class="accordion__item ">
+                                        <div class="d-flex">
+                                            @php
+                                                $date = Carbon::parse($activity['date']);
+                                                $date = $date->format('d F Y');
+                                            @endphp
+                                            <div
+                                                class="accordion__icon size-40 flex-center bg-blue-2 text-blue-1 rounded-full">
+                                                <div class="text-14 fw-500">{{ $activity['day'] }}</div>
+                                            </div>
+
+                                            <div class="ml-20">
+                                                <div class="text-16 lh-15 fw-500">Day {{ $activity['day'] }}</div>
+                                                <div class="text-14 lh-15 text-light-1 mt-5">{{ $date }}</div>
+
+                                                <div class="accordion__content">
+                                                    <div class="pt-15 pb-15">
+                                                        {{-- <img src="{{ asset('img/lists/tour/single/2.png') }}" alt="image" class="rounded-4 mt-15"> --}}
+                                                        <div class="text-14 lh-17 mt-15">
+
+                                                            @foreach ($activity['activities'] as $daily)
+                                                                <div class="d-flex items-center text-green-2">
+                                                                    <i class="icon-check text-12 mr-10"></i>
+                                                                    <div class="text-15"><span
+                                                                            class="text-dark font-weight-bold">{{ $daily['time'] . ':' }}</span>
+                                                                        {{ $daily['activity'] }}</div>
+                                                                    <span
+                                                                        style="color:black; text-style:bold;">{{ $daily['budget'] }}</span>
+                                                                </div>
+                                                                <hr>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="accordion__button">
+                                                    <button data-open-change-title="See less"
+                                                        class="d-block lh-15 text-14 text-blue-1 underline fw-500 mt-5">
+                                                        See activites
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                </div>
+
+                @push('scripts')
+                    <script>
+                        class HTMLMapMarker extends google.maps.OverlayView {
+                            constructor(args) {
+                                super();
+                                this.latlng = args.latlng
+                                this.html = args.html
+                                this.setMap(args.map)
+                            }
+
+                            createDiv() {
+                                this.div = document.createElement('div');
+                                this.div.style.position = 'absolute';
+
+                                if (this.html) {
+                                    this.div.innerHTML = this.html;
+                                }
+                                google.maps.event.addDomListener(this.div, 'click', event => {
+                                    google.maps.event.trigger(this, 'click');
+                                });
+                            }
+
+                            appendDivToOverlay() {
+                                const panes = this.getPanes();
+                                panes.overlayMouseTarget.appendChild(this.div);
+                            }
+
+                            positionDiv() {
+                                const point = this.getProjection().fromLatLngToDivPixel(this.latlng);
+                                if (point) {
+                                    this.div.style.left = `${point.x}px`;
+                                    this.div.style.top = `${point.y}px`;
+                                }
+                            }
+
+                            draw() {
+                                if (!this.div) {
+                                    this.createDiv();
+                                    this.appendDivToOverlay();
+                                }
+                                this.positionDiv();
+                            }
+
+                            remove() {
+                                if (this.div) {
+                                    this.div.parentNode.removeChild(this.div);
+                                    this.div = null;
+                                }
+                            }
+
+                            getVisible() {
+                                return this.latlng;
+                            }
+
+                            getPosition() {
+                                return new google.maps.LatLng(this.latlng);
+                            }
+
+                            getDraggable() {
+                                return false;
+                            }
+                        }
+
+                        const locations = [];
+
+                        // Assuming @js($activities) correctly outputs a JavaScript array
+                        const activities = @js($activites);
+
+                        // Iterate through the activities to construct the locations array
+                        activities.forEach(activity => {
+
+                            activity['activities'].forEach(act => {
+                                if (act.hasOwnProperty('lat') && act.hasOwnProperty(
+                                        'lng')) { // Check if 'lat' and 'lng' properties exist
+                                    locations.push({
+                                        name: act['location'],
+                                        lat: act['lat'],
+                                        lng: act['lng']
+                                    });
+                                } else {
+                                    console.warn("No 'lat' or 'lng' property found in act:", act);
+                                }
+                            });
+                        });
+
+
+
+                        function initMapPlaces($locations) {
+                            if (!document.querySelector('.js-map-places')) return
+
+                            const map = new google.maps.Map(document.querySelector('.js-map-places'), {
+                                zoom: 5,
+                                center: {
+                                    lat: locations[0].lat,
+                                    lng: locations[0].lng
+                                }
+                            });
+
+                            const markers = locations.map((location, index) => {
+                                const marker = new google.maps.Marker({
+                                    position: {
+                                        lat: location.lat,
+                                        lng: location.lng
+                                    },
+                                    map: map,
+                                    label: `${index + 1}`
+                                });
+
+                                const contentString = `
+            <div class="d-flex">
+                <div class="px-5 py-5">
+                    <div class="text-16 fw-500">${location.name}</div>
+                </div>
+            </div>
+        `;
+
+                                const infowindow = new google.maps.InfoWindow({
+                                    content: contentString,
+                                });
+
+                                marker.addListener("click", () => {
+                                    infowindow.open({
+                                        anchor: marker,
+                                        map,
+                                        shouldFocus: false,
+                                    });
+                                });
+
+                                return marker;
+                            });
+
+                            new markerClusterer.MarkerClusterer({
+                                map,
+                                markers: markers
+                            });
+                        }
+
+                        initMapPlaces(locations);
+                    </script>
+                @endpush
+
+
+                <div class="col-lg-8">
+                    <div class="map rounded-4 js-map-places"></div>
+                </div>
+            </div>
         </div>
     </section>
 

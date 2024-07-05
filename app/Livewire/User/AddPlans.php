@@ -134,22 +134,22 @@ class AddPlans extends Component
                \"day\": 1,
                \"date\": \"2024-03-10\",
                \"activities\": [
-                 {\"time\": \"10:00 AM\", \"activity\": \"Arrival in Nairobi\", \"budget\": \"\$50\"},
-                 {\"time\": \"12:00 PM\", \"activity\": \"Check-in at hotel\", \"budget\": \"\$100\"},
-                 {\"time\": \"03:00 PM\", \"activity\": \"Visit Nairobi National Museum\", \"budget\": \"\$20\"}
+                 {\"time\": \"10:00 AM\", \"activity\": \"Arrival in Nairobi\", \"budget\": \"\$50\",  \"location\": \"Peanut-Free Restaurant\", \"lat\": -1.292066, \"lng\": 36.821946},
+                 {\"time\": \"12:00 PM\", \"activity\": \"Check-in at hotel\", \"budget\": \"\$100\",  \"location\": \"Peanut-Free Restaurant\", \"lat\": -1.292066, \"lng\": 36.821946},
+                 {\"time\": \"03:00 PM\", \"activity\": \"Visit Nairobi National Museum\", \"budget\": \"\$20\",  \"location\": \"Peanut-Free Restaurant\", \"lat\": -1.292066, \"lng\": 36.821946}
                ]
              },
              {
                \"day\": 2,
                \"date\": \"2024-03-11\",
                \"activities\": [
-                 {\"time\": \"09:00 AM\", \"activity\": \"Full-day safari at Nairobi National Park\", \"budget\": \"\$150\"},
-                 {\"time\": \"07:00 PM\", \"activity\": \"Dinner at local restaurant (peanut-free options)\", \"budget\": \"\$30\"}
+                 {\"time\": \"09:00 AM\", \"activity\": \"Full-day safari at Nairobi National Park\", \"budget\": \"\$150\",  \"location\": \"Peanut-Free Restaurant\", \"lat\": -1.292066, \"lng\": 36.821946},
+                 {\"time\": \"07:00 PM\", \"activity\": \"Dinner at local restaurant (peanut-free options)\", \"budget\": \"\$30\", \"location\": \"Peanut-Free Restaurant\", \"lat\": -1.292066, \"lng\": 36.821946}
                ]
              }
            ]
          '''
-
+            Note: Ensure the latitude and longitude coordinates are accurate and correspond to the actual locations.
          Please generate the complete itinerary in the JSON format as shown based on the given details. Make sure the response is pure json no extra strings or characters added.
          ";
 

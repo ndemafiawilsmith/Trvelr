@@ -307,6 +307,8 @@ Our mission is to help you save money for your dream vacations in a fun, easy, a
     </script>
 
     @livewireScripts()
+    @stack('scripts')
+
 </body>
 
 </html>

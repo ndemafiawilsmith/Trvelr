@@ -38,7 +38,7 @@
                     $randomFact = $africa_travel_facts[array_rand($africa_travel_facts)];
                 @endphp
                 <p class="" id='randomFact' style="text-align: center;"><b>Trvelr AI:</b> Planning</p>
-                <p class="" style="text-align: center;"><b>Do you know</b>:{{$randomFact}}</p>
+                {{-- <p class="" style="text-align: center;"><b>Do you know</b>:{{$randomFact}}</p> --}}
                 @push('scripts')
                 <script>
                     const facts = @json($africa_travel_facts);

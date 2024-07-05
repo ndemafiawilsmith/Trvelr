@@ -16,6 +16,8 @@ class PlanDetails extends Component
 {
     public $itineraryDet;
     public $activities;
+
+    public $testVar = "ello";
     public function mount($id)
     {
         $this->dispatch('clickk', el: 'dashboard');
@@ -27,8 +29,11 @@ class PlanDetails extends Component
     {
         $country = country::where('countryname', $desc)->first();
         $CountryImages = countryImages::where('country_id', $country->id)->count();
-        if ($CountryImages > 0) {
-        } else {
+        // if ($CountryImages > 0) {
+        //     $photoo = countryImages::where('country_id', $country->id)->get();
+        //     // dd($photoo);
+        //     return $photoo;
+        // } else {
 
 
             $pixabayClient = new \Pixabay\PixabayClient([
@@ -37,7 +42,6 @@ class PlanDetails extends Component
 
             // test it out
             $results = $pixabayClient->get(['q' => $desc . ', Africa'], true);
-            // dd($results);
 
             foreach ($results['hits'] as $images) {
                 countryImages::create(
@@ -51,10 +55,12 @@ class PlanDetails extends Component
                     ]
                 );
             }
-        }
-        $photoo = countryImages::where('country_id', $country->id)->get();
 
-        return $photoo;
+            $photoo = $results['hits'];
+            // dd($photoo);
+            return $photoo;
+        // }
+
     }
 
 
@@ -65,6 +71,8 @@ class PlanDetails extends Component
         $desc = $itinerary->country->countryname;
         $photos = $this->getImages($desc);
         $activities = json_decode($itinerary->activities, true);
+
+        // dd($activities);
 
         // Get Country Deatils
         $countryDetails = countryDetails::where('country_id', $itinerary->country->id)->first();

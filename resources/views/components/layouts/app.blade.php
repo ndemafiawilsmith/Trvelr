@@ -1506,6 +1506,8 @@ Our mission is to help you save money for your dream vacations in a fun, easy, a
 
   <!-- JavaScript -->
   @livewireScripts()
+  @stack('scripts')
+
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM"></script>
   <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
 

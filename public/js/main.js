@@ -705,65 +705,65 @@ function initMap() {
   new markerClusterer.MarkerClusterer({ map, markers: markers })
 }
 
-function initMapPlaces() {
-  if (!document.querySelector('.js-map-places')) return
+// function initMapPlaces() {
+//   if (!document.querySelector('.js-map-places')) return
 
-  const map = new google.maps.Map(document.querySelector('.js-map-places'), {
-    zoom: 10,
-    center: {
-      lat: 40.8,
-      lng: -74.02
-    }
-  })
+//   const map = new google.maps.Map(document.querySelector('.js-map-places'), {
+//     zoom: 10,
+//     center: {
+//       lat: 40.8,
+//       lng: -74.02
+//     }
+//   })
 
-  const locations = [
-    { lat: 40.800610, lng: -74.035242 },
-    { lat: 41.000610, lng: -74.135242 },
-    { lat: 40.700610, lng: -73.835242 },
-  ]
+//   const locations = [
+//     { lat: 40.800610, lng: -74.035242 },
+//     { lat: 41.000610, lng: -74.135242 },
+//     { lat: 40.700610, lng: -73.835242 },
+//   ]
 
-  const contentString = `
-    <div class="d-flex">
-      <div class="px-5 py-5">
-        <div class="text-16 fw-500">The Roman Baths</div>
-      </div>
-    </div>
-  `;
+//   const contentString = `
+//     <div class="d-flex">
+//       <div class="px-5 py-5">
+//         <div class="text-16 fw-500">The Roman Baths</div>
+//       </div>
+//     </div>
+//   `;
 
-  const markers = locations.map((location) => {
-    const marker = new HTMLMapMarker({
-      latlng: location,
-      map: map,
-      html: `
-        <div class="mapMarker flex-center bg-white rounded-100 border-dark-1 size-40">
-          <div class="text-14 fw-500">3</div>
-        </div>
-      `
-    })
+//   const markers = locations.map((location) => {
+//     const marker = new HTMLMapMarker({
+//       latlng: location,
+//       map: map,
+//       html: `
+//         <div class="mapMarker flex-center bg-white rounded-100 border-dark-1 size-40">
+//           <div class="text-14 fw-500">3</div>
+//         </div>
+//       `
+//     })
 
-    const infowindow = new google.maps.InfoWindow({
-      content: contentString,
-    })
+//     const infowindow = new google.maps.InfoWindow({
+//       content: contentString,
+//     })
 
-    google.maps.event.addListener(map, 'click', function() {
-      infowindow.close()
-    })
+//     google.maps.event.addListener(map, 'click', function() {
+//       infowindow.close()
+//     })
 
-    marker.addListener("click", () => {
-      setTimeout(() => {
-        infowindow.open({
-          anchor: marker,
-          map,
-          shouldFocus: false,
-        })
-      }, 50);
-    })
+//     marker.addListener("click", () => {
+//       setTimeout(() => {
+//         infowindow.open({
+//           anchor: marker,
+//           map,
+//           shouldFocus: false,
+//         })
+//       }, 50);
+//     })
 
-    return marker;
-  })
+//     return marker;
+//   })
 
-  new markerClusterer.MarkerClusterer({ map, markers: markers })
-}
+//   new markerClusterer.MarkerClusterer({ map, markers: markers })
+// }
 
 function initMapSingle() {
   if (!document.querySelector('.js-map-single')) return

@@ -7,29 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-		<meta property="og:locale" content="en_NG">
-		<meta property="og:url" content="{{url()->current()}}">
-		<meta property="og:title" content="{{ $title ?? 'Trvelr'}}">
-		<meta property="og:description"
-			content="{{ $description ?? 'At Trvelr we believe that planning a vacation should be as enjoyable as the trip itself.
-Our mission is to help you save money for your dream vacations in a fun, easy, and stress-free way. Leveraging the power of AI, we curate personalized itineraries tailored to your preferences and interests, making every journey unique and unforgettable.
-'}}">
-		<meta property="og:image" content="{{ asset('img/favicon.png') }}">
-		<meta name="google:card" content="summary_large_image">
-		<meta name="google:description"
-			content="{{ $description ?? 'At Trvelr we believe that planning a vacation should be as enjoyable as the trip itself.
-Our mission is to help you save money for your dream vacations in a fun, easy, and stress-free way. Leveraging the power of AI, we curate personalized itineraries tailored to your preferences and interests, making every journey unique and unforgettable.
-'}}">
-		<meta name="google:title" content="{{ $title ?? 'Trvelr'}}">
-		<meta name="google:image" content="{{ asset('img/favicon.png') }}">
-		<meta name="description"
-			content="{{ $description ?? 'At Trvelr we believe that planning a vacation should be as enjoyable as the trip itself.
-Our mission is to help you save money for your dream vacations in a fun, easy, and stress-free way. Leveraging the power of AI, we curate personalized itineraries tailored to your preferences and interests, making every journey unique and unforgettable.
-'}}" />
-		<meta name="author" content="Trvelr" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="keywords"
-			content="Trvelr, vacation planning, AI travel app, personalized itineraries, save money for vacations, dream vacations, stress-free travel planning, easy travel planning, fun travel planning, unique journeys, unforgettable travel experiences, travel savings, customized travel plans, travel budget management, travel recommendations" />
+    <meta property="og:locale" content="en_NG">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="{{ $title ?? 'Trvelr' }}">
+    <meta property="og:description"
+        content="{{ $description ??
+            'At Trvelr we believe that planning a vacation should be as enjoyable as the trip itself.
+        Our mission is to help you save money for your dream vacations in a fun, easy, and stress-free way. Leveraging the power of AI, we curate personalized itineraries tailored to your preferences and interests, making every journey unique and unforgettable.
+        ' }}">
+    <meta property="og:image" content="{{ asset('img/favicon.png') }}">
+    <meta name="google:card" content="summary_large_image">
+    <meta name="google:description"
+        content="{{ $description ??
+            'At Trvelr we believe that planning a vacation should be as enjoyable as the trip itself.
+        Our mission is to help you save money for your dream vacations in a fun, easy, and stress-free way. Leveraging the power of AI, we curate personalized itineraries tailored to your preferences and interests, making every journey unique and unforgettable.
+        ' }}">
+    <meta name="google:title" content="{{ $title ?? 'Trvelr' }}">
+    <meta name="google:image" content="{{ asset('img/favicon.png') }}">
+    <meta name="description"
+        content="{{ $description ??
+            'At Trvelr we believe that planning a vacation should be as enjoyable as the trip itself.
+        Our mission is to help you save money for your dream vacations in a fun, easy, and stress-free way. Leveraging the power of AI, we curate personalized itineraries tailored to your preferences and interests, making every journey unique and unforgettable.
+        ' }}" />
+    <meta name="author" content="Trvelr" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords"
+        content="Trvelr, vacation planning, AI travel app, personalized itineraries, save money for vacations, dream vacations, stress-free travel planning, easy travel planning, fun travel planning, unique journeys, unforgettable travel experiences, travel savings, customized travel plans, travel budget management, travel recommendations" />
 
 
     <!-- Google fonts -->
@@ -159,19 +162,35 @@ Our mission is to help you save money for your dream vacations in a fun, easy, a
 
             <div class="sidebar -dashboard">
 
+
+                @if(env('Test_mode'))
+
                 <div class="sidebar__item">
                     <div class="sidebar__button @if (Route::currentRouteName() == 'user.dashboard') -is-active @endif">
-                        <a href="{{ route('user.dashboard') }}" class="d-flex items-center text-15 lh-1 fw-500">
-                            <img src="{{ asset('img/dashboard/sidebar/compass.svg') }}" alt="image" class="mr-15">
-                            Dashboard
+                        <a href="{{ route('3mtt') }}" class="d-flex items-center text-15 lh-1 fw-500">
+                            <img src="{{ asset('img/dashboard/sidebar/compass.svg') }}" alt="image"
+                                class="mr-15">
+                            Home
                         </a>
                     </div>
                 </div>
 
+                @else
+
+                <div class="sidebar__item">
+                    <div class="sidebar__button @if (Route::currentRouteName() == 'user.dashboard') -is-active @endif">
+                        <a href="{{ route('user.dashboard') }}" class="d-flex items-center text-15 lh-1 fw-500">
+                            <img src="{{ asset('img/dashboard/sidebar/compass.svg') }}" alt="image"
+                                class="mr-15">
+                            Dashboardddd
+                        </a>
+                    </div>
+                </div>
                 <div class="sidebar__item">
                     <div class="sidebar__button  @if (Route::currentRouteName() == 'plans') -is-active @endif">
                         <a href="{{ route('plans') }}" class="d-flex items-center text-15 lh-1 fw-500">
-                            <img src="{{ asset('img/dashboard/sidebar/bookmark.svg') }}" alt="image" class="mr-15">
+                            <img src="{{ asset('img/dashboard/sidebar/bookmark.svg') }}" alt="image"
+                                class="mr-15">
                             Planner
                         </a>
                     </div>
@@ -186,6 +205,19 @@ Our mission is to help you save money for your dream vacations in a fun, easy, a
                         </a>
                     </div>
                 </div>
+                <div class="sidebar__item">
+                    <div class="sidebar__button ">
+                        <a href="{{ route('user.logout') }}" class="d-flex items-center text-15 lh-1 fw-500">
+                            <img src="{{ asset('img/dashboard/sidebar/log-out.svg') }}" alt="image"
+                                class="mr-15">
+                            Logout
+                        </a>
+                    </div>
+                </div>
+
+                @endif
+
+                
                 {{-- <div class="sidebar__item">
                     <div class="sidebar__button ">
                         <a href="db-booking.html" class="d-flex items-center text-15 lh-1 fw-500">
@@ -203,16 +235,6 @@ Our mission is to help you save money for your dream vacations in a fun, easy, a
                         </a>
                     </div>
                 </div> --}}
-
-                <div class="sidebar__item">
-                    <div class="sidebar__button ">
-                        <a href="{{ route('user.logout') }}" class="d-flex items-center text-15 lh-1 fw-500">
-                            <img src="{{ asset('img/dashboard/sidebar/log-out.svg') }}" alt="image"
-                                class="mr-15">
-                            Logout
-                        </a>
-                    </div>
-                </div>
 
             </div>
 
@@ -261,8 +283,11 @@ Our mission is to help you save money for your dream vacations in a fun, easy, a
     @php
         $isPlanDetails = Route::currentRouteName() == 'plan.details';
         $isSavingsCreate = Route::currentRouteName() == 'savings.create';
+        $addPlan = Route::currentRouteName() == 'add.plan';
+
     @endphp
-    @if ($isPlanDetails || $isSavingsCreate)
+
+    @if ($isPlanDetails || $isSavingsCreate || $addPlan)
         <script>
             window.addEventListener('clickk', event => {
                 const target = document.querySelector(`[data-x=dashboard]`);

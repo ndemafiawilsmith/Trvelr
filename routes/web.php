@@ -8,6 +8,7 @@ use App\Livewire\ContactUs;
 use App\Livewire\Gemini\Test;
 use App\Livewire\Home;
 use App\Livewire\ItineraryGenerator;
+use App\Livewire\Mtt\Home as MttHome;
 use App\Livewire\User\AddPlans;
 use App\Livewire\User\ComputePlan;
 use App\Livewire\User\Dashboard;
@@ -35,8 +36,12 @@ fix
 //     return view('welcome');
 // });
 
-
-Route::get('/', Home::class)->name('index');
+if(env('Test_mode')){ 
+    Route::get('/', MttHome::class)->name('index');
+}else{
+    Route::get('/', Home::class)->name('index');
+}
+Route::get('/3mtt', MttHome::class)->name('3mtt');
 Route::get('/about', About::class)->name('about-us');
 Route::get('/contact', ContactUs::class)->name('contact-us');
 Route::get('/become-expert', BecomeExpert::class)->name('become.expert');

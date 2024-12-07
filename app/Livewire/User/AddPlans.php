@@ -27,6 +27,12 @@ class AddPlans extends Component
     public $result;
 
 
+    public function mount(){
+        $testingValue = env('Testing');
+        if($testingValue === 'true'){
+            $this->dispatch('clickk', el: 'dashboard');
+        }
+    }
     // Real-time validation
     public function updated($propertyName)
     {
